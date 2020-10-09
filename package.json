@@ -1,0 +1,30 @@
+{
+  "name": "sun-home",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kata-agata/sun-home.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kata-agata/sun-home/issues"
+  },
+  "homepage": "https://github.com/kata-agata/sun-home#readme",
+  "devDependencies": {
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-node-externals": "^2.5.2"
+  },
+  "dependencies": {
+    "css-loader": "^4.3.0",
+    "style-loader": "^2.0.0"
+  }
+}

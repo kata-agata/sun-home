@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require("webpack");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry:{
@@ -9,10 +10,9 @@ module.exports = {
   output:{
     filename: "[name]-bundle.js", //[name] - taken from main in entry
     path: path.resolve(__dirname, "../dist"),
-    publicPath: "/",
-    sourceMapFilename: "[name].js.map"
+    publicPath: "/"
+  //  sourceMapFilename: "[name].js.map"
   },
-  devtool: "source-map",
   devServer: {
     contentBase: "dist",
     overlay: true,
@@ -21,6 +21,7 @@ module.exports = {
       colors:true
     }
   },
+  devtool: "source-map",
   module: {
     rules: [
       {
@@ -33,22 +34,17 @@ module.exports = {
       {
         test: /\.html$/,
         use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "[name].html"
-            }
-          },
-          { loader: "extract-loader"},
           { loader: "html-loader" }
         ]
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
-        use: [
-          "file-loader"
-        ]
-      },
+              test: /\.(png|jpe?g|gif|svg)$/i,
+              loader: 'file-loader',
+              options: {
+                esModule: false,
+                name: 'images/[name]-[hash:8].[ext]',
+              },
+            },
       {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
@@ -59,11 +55,24 @@ module.exports = {
             plugins: [ '@babel/plugin-transform-runtime']
           }
         }
-      }
-
+      },
+      {
+        test: /\.hbs$/,
+        use: [
+          {
+            loader: "handlebars-loader",
+            query: { inlineRequires: "/images/"}
+          }
+        ]
+      },
     ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      template: "./src/index.hbs",
+      title: "Sun-home"
+    }),
+
   ]
 }

@@ -4,7 +4,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry:{
-    main: "./src/main.js"
+    main: [
+      "babel-runtime/regenerator",
+      "webpack-hot-middleware/client?reload=true",
+      "./src/main.js"
+    ]
   },
   mode:"development",
   output:{
@@ -24,11 +28,32 @@ module.exports = {
   devtool: "source-map",
   module: {
     rules: [
+      // {
+      //   test: /\.css$/,
+      //   use: [
+      //     { loader: "style-loader" },
+      //     { loader: "css-loader" }
+      //   ]
+      // },
       {
-        test: /\.css$/,
+        test: /\.scss$/,
         use: [
           { loader: "style-loader" },
-          { loader: "css-loader" }
+          { loader: "css-loader",
+            options: {
+              modules: {
+                localIdentName: "[path][name]__[local]"
+              },
+            }
+          },
+
+          {
+            loader: 'postcss-loader',
+          },
+
+
+
+          { loader: "sass-loader"}
         ]
       },
       {
@@ -70,7 +95,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      template: "./src/index.hbs",
+      template: "./src/views/layouts/index.hbs",
       title: "Sun-home"
     }),
 

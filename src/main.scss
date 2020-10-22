@@ -1,0 +1,27 @@
+$bg-color: pink;
+
+body{
+  margin: 0;
+  background-color: $bg-color;
+}
+
+.profile{
+  height: 100vh;
+  display: flex;
+  color: yellow;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+
+  img{
+    border-radius: 100%;
+  }
+}
+
+
+h1{
+
+  font-size: 5em;
+  font-family: sans-serif;
+  text-shadow: 0 0 20px black;
+}

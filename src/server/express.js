@@ -1,7 +1,8 @@
 const express = require('express');
 const path = require('path');
 const authRouter = require('./routes/admin/auth');
-const exphbs = require('express-handlebars');
+const mainRouter = require('./routes/main');
+var handlebars = require('express-handlebars');
 
 const server = express();
 
@@ -27,19 +28,19 @@ if(!isProd){
 const staticMiddleware = express.static("dist");
 server.use(staticMiddleware);
 
-server.set('views', path.join(__dirname, '/../views/'));
-server.engine('hbs',exphbs({
-  defaultLayout: 'index',
-  layoutsDir: path.join(__dirname, '/../views/layouts'),
-  partialsDir: path.join(__dirname, '/../views/partials'),
-  extname: '.hbs'
+
+
+server.engine('hbs', handlebars({
+    layoutsDir: path.join(__dirname, "/../views/layouts"),
+    partialsDir: path.join(__dirname, "/../views/partials"),
+    defaultLayout: 'layout',
+    extname: 'hbs'
 }));
 server.set('view engine', 'hbs');
-
-
-
+server.set('views', path.join(__dirname, "/../views"));
 
 server.use(authRouter);
+
 
 const PORT = process.env.PORT || 8080;
 server.listen(PORT, ()=>{

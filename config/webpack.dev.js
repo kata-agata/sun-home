@@ -4,11 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry:{
-    main: [
-      "babel-runtime/regenerator",
-      "webpack-hot-middleware/client?reload=true",
-      "./src/main.js"
-    ]
+    main: './src/main.js'
   },
   mode:"development",
   output:{
@@ -28,13 +24,6 @@ module.exports = {
   devtool: "source-map",
   module: {
     rules: [
-      // {
-      //   test: /\.css$/,
-      //   use: [
-      //     { loader: "style-loader" },
-      //     { loader: "css-loader" }
-      //   ]
-      // },
       {
         test: /\.scss$/,
         use: [
@@ -46,13 +35,7 @@ module.exports = {
               },
             }
           },
-
-          {
-            loader: 'postcss-loader',
-          },
-
-
-
+          { loader: 'postcss-loader'},
           { loader: "sass-loader"}
         ]
       },
@@ -63,13 +46,13 @@ module.exports = {
         ]
       },
       {
-              test: /\.(png|jpe?g|gif|svg)$/i,
-              loader: 'file-loader',
-              options: {
-                esModule: false,
-                name: 'images/[name]-[hash:8].[ext]',
-              },
-            },
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        loader: 'file-loader',
+        options: {
+          esModule: false,
+          name: 'images/[name]-[hash:8].[ext]',
+        },
+      },
       {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
@@ -86,7 +69,15 @@ module.exports = {
         use: [
           {
             loader: "handlebars-loader",
-            query: { inlineRequires: "/images/"}
+            query: {
+              inlineRequires: "/images/",
+              partialsDir: [
+                path.join(__dirname, "/../src/views/partials")
+              ],
+              layoutsDir: [
+                path.join(__dirname, "/../src/views/layouts")
+              ]
+            }
           }
         ]
       },
@@ -94,10 +85,16 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({
-      template: "./src/views/layouts/index.hbs",
-      title: "Sun-home"
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        handlebarsLoader: {}
+      }
     }),
-
+    new HtmlWebpackPlugin({
+       filename: "index.html",
+       template: './src/views/index.hbs',
+       title: "Sun-home",
+      //      chunks: ["main"]
+    }),
   ]
 }

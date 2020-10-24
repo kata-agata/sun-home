@@ -1,5 +1,9 @@
+require("babel-runtime/regenerator");
+require("webpack-hot-middleware/client?reload=true");
 require("./main.scss");
-require("./views/layouts/index.hbs");
+require("./views/index.hbs");
+require("./views/signin.hbs");
+import 'bootstrap';
 
 // import buttonStyle from './styles/button.scss';
 //

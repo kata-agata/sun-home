@@ -1,27 +1,7 @@
-$bg-color: pink;
+//@import "~bootstrap/scss/bootstrap";
 
-body{
-  margin: 0;
+$bg-color: rgb(177, 177, 177) ;
+
+body {
   background-color: $bg-color;
-}
-
-.profile{
-  height: 100vh;
-  display: flex;
-  color: yellow;
-  align-items: center;
-  justify-content: center;
-  flex-flow: column;
-
-  img{
-    border-radius: 100%;
-  }
-}
-
-
-h1{
-
-  font-size: 5em;
-  font-family: sans-serif;
-  text-shadow: 0 0 20px black;
 }

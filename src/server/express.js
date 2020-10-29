@@ -43,7 +43,7 @@ server.engine('hbs', handlebars({
 server.set('view engine', 'hbs');
 server.set('views', path.join(__dirname, "/../views"));
 
-server.use(authRouter);
+server.use('/sun/adminPanel', authRouter);
 
 
 const PORT = process.env.PORT || 8080;

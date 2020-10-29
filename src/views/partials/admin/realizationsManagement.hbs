@@ -1,0 +1,24 @@
+<div class="container">
+  <a href="realizations/new" class="btn btn-success">Dodaj</a>
+  <h2>Realizations List</h2>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">No.</th>
+          <th scope="col">Title</th>
+          <th scope="col">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#posts}}
+        <tr>
+          <th scope="row"></th>
+          <td>{{this.title}}</td>
+          <td>{{this.createAt}}</td>
+        </tr>
+        {{/posts}}
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const path = require('path');
 const authRouter = require('./routes/admin/auth');
 const mainRouter = require('./routes/main');
@@ -6,6 +7,9 @@ var handlebars = require('express-handlebars');
 
 const server = express();
 
+mongoose.connect('mongodb://localhost/blog',{
+  useNewUrlParser: true, useUnifiedTopology: true
+});
 
 const isProd = process.env.NODE_ENV ==="production";
 

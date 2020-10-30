@@ -1,7 +1,7 @@
 const {MongoClient} = require('mongodb');
 
 async function main() {
-  const uri = 'mongodb+srv://admin:Starlight30@cluster0.sepqc.mongodb.net/test?retryWrites=true&w=majority'
+  const uri = ''
   const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true});
   try{
     await client.connect(); // returns promise

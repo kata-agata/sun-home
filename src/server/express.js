@@ -4,6 +4,7 @@ const path = require('path');
 const authRouter = require('./routes/admin/auth');
 const mainRouter = require('./routes/main');
 var handlebars = require('express-handlebars');
+const dateFormat = require('../views/helpers/dateFormat');
 
 const server = express();
 
@@ -33,13 +34,16 @@ const staticMiddleware = express.static("dist");
 server.use(staticMiddleware);
 
 
-
-server.engine('hbs', handlebars({
-    layoutsDir: path.join(__dirname, "/../views/layouts"),
-    partialsDir: path.join(__dirname, "/../views/partials"),
-    defaultLayout: 'layout',
-    extname: 'hbs'
-}));
+const hbs = handlebars.create({
+  layoutsDir: path.join(__dirname, "/../views/layouts"),
+  partialsDir: path.join(__dirname, "/../views/partials"),
+  defaultLayout: 'layout',
+  extname: 'hbs',
+  helpers: {
+    dateFormat
+  }
+});
+server.engine('hbs', hbs.engine);
 server.set('view engine', 'hbs');
 server.set('views', path.join(__dirname, "/../views"));
 

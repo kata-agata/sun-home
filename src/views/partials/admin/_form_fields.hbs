@@ -1,14 +1,14 @@
 <div class="form-group">
   <label for="title">Tytuł</label>
-  <input required type="text" name="title" id="r-title" class="form-control">
+  <input required value="{{realization.title}}" type="text" name="title" id="r-title" class="form-control">
 </div>
 <div class="form-group">
-  <label for="content">Tekst</label>
-  <textarea name="content" id="r-content" class="form-control"></textarea>
+  <label for="description">Opis</label>
+  <textarea name="description" id="descripiton" class="form-control">{{realization.description}}</textarea>
 </div>
 <div class="form-group">
   <label for="markdown">Markdown</label>
-  <textarea name="markdown" id="r-markdown" class="form-control"></textarea>
+  <textarea required value="{{realization.markdown}}" name="markdown" id="r-markdown" class="form-control">{{realization.markdown}}</textarea>
 </div>
 
 <a href="../realizations" class="btn btn-danger">Anuluj</a>

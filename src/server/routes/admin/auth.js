@@ -1,5 +1,5 @@
 const express = require('express');
-
+const Realization = require('./../../../models/realization');
 const router = express.Router();
 
 
@@ -32,11 +32,32 @@ router.get('/realizations', (req,res)=>{
 });
 
 router.get('/realizations/new', (req,res)=>{
-  res.render('partials/admin/addRealization')
+  res.render('partials/admin/addRealization', { realization: new Realization()})
 })
 
-router.post('/realizations', (req,res)=>{
+router.get('/realizations/:id', async (req,res)=>{
+  let realization = await Realization.findById(req.params.id);
+  if ( realization === null) res.redirect('../realizations');
+  realization = realization.toJSON();
+  res.render('partials/admin/showRealization', {realization: realization});
+})
 
+router.post('/realizations/new', async (req,res)=>{
+  let realization = new Realization({
+    title: req.body.title,
+    description: req.body.description,
+    markdown: req.body.markdown
+  })
+
+  try{
+    realization = await realization.save();
+    realization = realization.toJSON();
+    console.log(realization);
+    res.redirect(`../realizations/${realization._id}`);
+  } catch(e){
+    console.log(e);
+    res.render('partials/admin/addRealization', {realization: realization})
+  }
 })
 
 module.exports = router;

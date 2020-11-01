@@ -43,8 +43,9 @@ server.engine('hbs', handlebars({
 server.set('view engine', 'hbs');
 server.set('views', path.join(__dirname, "/../views"));
 
-server.use('/sun/adminPanel', authRouter);
 
+server.use(express.urlencoded({extended: false})); // to access parameters of form
+server.use('/sun/adminPanel', authRouter); // must go after urlencoded
 
 const PORT = process.env.PORT || 8080;
 server.listen(PORT, ()=>{

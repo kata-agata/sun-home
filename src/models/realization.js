@@ -5,7 +5,7 @@ const realizationSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  descripiton: {
+  description: {
     type: String
   },
   markdown: {

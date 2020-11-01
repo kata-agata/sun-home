@@ -5,12 +5,13 @@ const authRouter = require('./routes/admin/auth');
 const mainRouter = require('./routes/main');
 var handlebars = require('express-handlebars');
 const dateFormat = require('../views/helpers/dateFormat');
+const methodOverride = require('method-override');
 
 
 const server = express();
 
 mongoose.connect('mongodb://localhost/blog',{
-  useNewUrlParser: true, useUnifiedTopology: true
+  useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true
 });
 
 const isProd = process.env.NODE_ENV ==="production";
@@ -50,6 +51,7 @@ server.set('views', path.join(__dirname, "/../views"));
 
 
 server.use(express.urlencoded({extended: false})); // to access parameters of form
+server.use(methodOverride('_method')); //override delete/put method
 server.use('/sun/adminPanel', authRouter); // must go after urlencoded
 
 const PORT = process.env.PORT || 8080;

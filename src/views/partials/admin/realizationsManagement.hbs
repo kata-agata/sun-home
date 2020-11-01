@@ -9,6 +9,7 @@
           <th scope="col">Tytuł</th>
           <th scope="col">Data stworzenia</th>
           <th scope="col">Opis</th>
+          <th scope="col-6"></th>
         </tr>
       </thead>
       <tbody>
@@ -18,8 +19,11 @@
           <td>{{this.title}}</td>
           <td>{{dateFormat this.createdAt}}</td>
           <td>{{this.description}}</td>
-          <td>
-            <a href="realizations/{{this.slug}}" class="btn btn-primary">Pokaż</a>
+          <td class="border-0">
+            <a href="realizations/{{this.slug}}" class="btn btn-primary pull-left">Pokaż</a>
+            <form class="d-inline" action="./realizations/{{this._id}}?_method=DELETE" method="POST">
+              <button class="btn btn-danger" type="submit">Usuń</button>
+            </form>
           </td>
         </tr>
         {{/realizations}}

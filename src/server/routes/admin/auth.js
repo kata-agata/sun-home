@@ -51,4 +51,13 @@ router.post('/realizations/new', async (req,res)=>{
   }
 })
 
+
+// don't delete with <a> becuse everything from database will be deleted
+//use form instead
+router.delete('/realizations/:id', async (req,res) => {
+  console.log('delete:',req.params.id);
+  await Realization.findByIdAndDelete(req.params.id);
+  res.redirect('./realizations');
+})
+
 module.exports = router;

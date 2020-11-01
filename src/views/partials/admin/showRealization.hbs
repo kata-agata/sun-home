@@ -3,4 +3,13 @@
   <div class="">
     {{dateFormat realization.createdAt}}
   </div>
+  <a href="/sun/adminPanel/realizations" class="btn btn-secondary">Lista realizacji</a>
+  <a href="/realizations/edit/{{realization._id}}" class="btn btn-info">Edytuj</a>
+
+  <div class="">
+    {{realization.markdown}}
+  </div>
+
+
+  </div>
 </div>

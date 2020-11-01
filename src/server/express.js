@@ -6,6 +6,7 @@ const mainRouter = require('./routes/main');
 var handlebars = require('express-handlebars');
 const dateFormat = require('../views/helpers/dateFormat');
 
+
 const server = express();
 
 mongoose.connect('mongodb://localhost/blog',{

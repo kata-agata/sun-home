@@ -1,23 +1,28 @@
 <div class="container">
   <a href="realizations/new" class="btn btn-success">Dodaj</a>
-  <h2>Realizations List</h2>
+  <h2>Lista realizacji</h2>
   <div class="table-responsive">
     <table class="table table-hover">
       <thead>
         <tr>
           <th scope="col">No.</th>
-          <th scope="col">Title</th>
-          <th scope="col">Date</th>
+          <th scope="col">Tytuł</th>
+          <th scope="col">Data stworzenia</th>
+          <th scope="col">Opis</th>
         </tr>
       </thead>
       <tbody>
-        {{#posts}}
+        {{#realizations}}
         <tr>
-          <th scope="row"></th>
+          <th scope="row">{{@index}}</th>
           <td>{{this.title}}</td>
-          <td>{{this.createAt}}</td>
+          <td>{{dateFormat this.createdAt}}</td>
+          <td>{{this.description}}</td>
+          <td>
+            <a href="realizations/{{this.slug}}" class="btn btn-primary">Pokaż</a>
+          </td>
         </tr>
-        {{/posts}}
+        {{/realizations}}
       </tbody>
     </table>
   </div>

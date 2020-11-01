@@ -12,22 +12,12 @@ router.get('/',(req,res)=>{
   res.render('adminPanel', {title: 'Sun-home Admin Panel'})
 })
 
-router.get('/realizations', (req,res)=>{
-  const posts = [
-    {
-      title: "post no 1",
-      createAt: Date.now(),
-      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    },
-    {
-      title: "post no 2",
-      createAt: Date.now(),
-      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-    }
-  ];
+router.get('/realizations', async (req,res)=>{
+  let realizations = await Realization.find().sort({createdAt: 'desc'})
+  realizations = realizations.map(r => r.toJSON());
   res.render('partials/admin/realizationsManagement', {
     title: "Sun-home Admin Panel Realizacje",
-    posts: posts
+    realizations: realizations
   })
 });
 
@@ -35,9 +25,10 @@ router.get('/realizations/new', (req,res)=>{
   res.render('partials/admin/addRealization', { realization: new Realization()})
 })
 
-router.get('/realizations/:id', async (req,res)=>{
-  let realization = await Realization.findById(req.params.id);
+router.get('/realizations/:slug', async (req,res)=>{
+  let realization = await Realization.findOne({slug: req.params.slug});
   if ( realization === null) res.redirect('../realizations');
+  //console.log(realization)
   realization = realization.toJSON();
   res.render('partials/admin/showRealization', {realization: realization});
 })
@@ -53,7 +44,7 @@ router.post('/realizations/new', async (req,res)=>{
     realization = await realization.save();
     realization = realization.toJSON();
     console.log(realization);
-    res.redirect(`../realizations/${realization._id}`);
+    res.redirect(`../realizations/${realization.slug}`);
   } catch(e){
     console.log(e);
     res.render('partials/admin/addRealization', {realization: realization})

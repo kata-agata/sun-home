@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+const marked = require('marked');
+const slugify = require('slugify');
+
 
 const realizationSchema = new mongoose.Schema({
   title: {
@@ -15,7 +18,20 @@ const realizationSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now
+  },
+  slug: {
+    type: String,
+    required: true,
+    unique: true
   }
 })
+
+realizationSchema.pre('validate', function(next) {
+  if (this.title) {
+    this.slug = slugify(this.title, {lower:true, strict:true})
+  }
+  next()
+})
+//strict:true => remove special characters
 
 module.exports = mongoose.model('Realization', realizationSchema);

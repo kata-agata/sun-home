@@ -3,19 +3,17 @@ My tasks:
     ✔ webpack @done(2020-10-24 12:31) @project(My tasks / Settings)
     ✔ express-js @done(2020-10-24 12:31) @project(My tasks / Settings)
     ✔ handlebars @done(2020-10-24 12:31) @project(My tasks / Settings)
-    ☐ bootstrap
+    ✔ bootstrap @done(2020-11-01 10:43) @project(My tasks / Settings)
   Layout:
     ✔ prepare templates for main page @done(2020-10-24 12:32) @project(My tasks / Layout)
     ✔ prepare templates for admin panel @done(2020-10-24 12:32) @project(My tasks / Layout)
   Database and repository:
-    ☐ create a mysql database
+    ☐ create database
       ☐ table of users
       ☐ table of opinons
-      ☐ table of realizations
+      ✔ table of realizations @done(2020-11-01 10:43) @project(My tasks / Database and repository)
       ☐ table of images urls
     ☐ connection to database
-    ☐ parsing mysql queries to JSON format
-    ☐ read JSON file and use data in list
     ☐ getAll() method
     ☐ getById(id) method
     ☐ delete(id)
@@ -25,4 +23,3 @@ My tasks:
     ☐ adding of users only for admin
     ☐ validation of password
     ☐ redirect to admin.hbs after signin
-    

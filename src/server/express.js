@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const authRouter = require('./routes/admin/auth');
+const realizationsRouter = require('./routes/admin/realizations');
 const mainRouter = require('./routes/main');
 var handlebars = require('express-handlebars');
 const dateFormat = require('../views/helpers/dateFormat');
@@ -53,6 +54,7 @@ server.set('views', path.join(__dirname, "/../views"));
 server.use(express.urlencoded({extended: false})); // to access parameters of form
 server.use(methodOverride('_method')); //override delete/put method
 server.use('/sun/adminPanel', authRouter); // must go after urlencoded
+server.use('/sun/adminPanel/realizations', realizationsRouter);
 
 const PORT = process.env.PORT || 8080;
 server.listen(PORT, ()=>{

@@ -1,0 +1,18 @@
+// $base-font-size
+// headings grow from h6 to h1 by $heading-scale
+// $base-font-size: 16px;
+// $heading-scale: 8; // amount of px headings grow from h6 to h1
+
+$headings-font-family:  $headersFont;
+$headings-font-weight:   700;
+
+// @for $i from 1 through 6 {
+//   h#{$i} {
+//     font-family:$headersFont;
+//     font-size: $base-font-size + $heading-scale * (6 - $i);
+//     font-weight: bold;
+//     letter-spacing: -0.02em;
+//     line-height: 140%;
+//     // text-transform: uppercase;
+//   }
+// }

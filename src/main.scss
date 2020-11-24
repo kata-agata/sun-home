@@ -1,7 +1,20 @@
 //@import "~bootstrap/scss/bootstrap";
 
-$bg-color: rgb(177, 177, 177) ;
+@import "styles/fonts.scss";
+@import "styles/colors.scss";
+@import "styles/headers.scss";
+@import "styles/navbar.scss";
+//rgb(177, 177, 177) ;
 
 body {
-  background-color: $bg-color;
+  background-image: url("./images/concrete-bg.jpg");
+  background-color: $concreteColor;
+  font-family: $bodyFont;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 160%;
 }
+
+$enable-responsive-font-sizes: true;
+@import "bootstrap/scss/bootstrap.scss";

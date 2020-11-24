@@ -1,10 +1,31 @@
 require("babel-runtime/regenerator");
 require("webpack-hot-middleware/client?reload=true");
 require("./main.scss");
-require("./views/index.hbs");
-require("./views/signin.hbs");
-import 'bootstrap';
+//import $ from 'jquery';
+//const Realization = require('./models/realization');
+const $ = require('jquery');
+global.$ = global.jQuery = $;
+require('bootstrap');
+const navbar = require('./js/navbar');
+//require('bootstrap/dist/js/bootstrap');
 
+navbar.toggleActive();
+navbar.moveInCollapse();
+
+// require("./views/index.hbs");
+// require("./views/signin.hbs");
+
+// var indexPage = require("./views/index.hbs");
+//
+// document.addEventListener("DOMContentLoaded", function() {
+// 	var div = document.createElement('div');
+// 	div.innerHTML = indexPage({
+// 		title: "test"
+// 	});
+// 	document.body.appendChild(div);
+// });
+
+//console.log(Realization);
 // import buttonStyle from './styles/button.scss';
 //
 // // var a = async(args) => {

@@ -1,0 +1,65 @@
+// .nav-link.active,
+// .nav-item.show .nav-link {
+//   color: $nav-tabs-link-active-color;
+//   background-color: $nav-tabs-link-active-bg;
+//   border-color: $nav-tabs-link-active-border-color;
+// }
+
+
+
+// @mixin sun-link($headingType, $color){
+//   $a: #{$headingType}-font-size;
+//   font-size: $($a);
+//   font-family: $headings-font-family;
+//   color: $color;
+// }
+
+//------CUSTOMIZING BOOTSTRAP VARIABLES
+  //------- active nav-item
+$navbar-light-active-color: $darkColor;
+  //-------  nav-item on hover
+$navbar-light-hover-color: $concreteColor;
+  //------- toggler styling
+$navbar-light-toggler-border-color: transparent;
+
+$navbar-light-color: $lightColor;
+$navbar-light-hover-color: $concreteColor;
+$navbar-light-toggler-border-color:  none;
+$navbar-light-active-color: $darkColor;
+// $navbar-light-disabled-color:       rgba($black, .3) !default;
+// $navbar-light-toggler-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><path stroke='#{$navbar-light-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
+
+
+$navbar-dark-color: $lightColor;
+$navbar-dark-hover-color:$lightColor;
+$navbar-dark-toggler-border-color:  none;
+$navbar-dark-active-color: $magentaColor;
+// $navbar-dark-disabled-color:        rgba($white, .25) !default;
+// $navbar-dark-toggler-icon-bg:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><path stroke='#{$navbar-dark-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
+
+
+//---------------custom styling of link in nav-item
+.nav-link.sun-link {
+  @extend .h6;
+  //color: $concreteColor;
+//  $navbar-light-color: $concreteColor;
+  &:hover{
+    text-shadow: 0px 0px 5px $magentaColor;
+  }
+}
+.nav-item.active {
+  text-shadow: 0px 0px 5px $magentaColor;
+}
+
+//-------------remove default border of hamburger menu
+.navbar-toggler:focus {
+    outline: none;
+}
+
+.navbar{
+  transition: background-color 0.35s ease-in-out;
+}
+
+.logo{
+    background-image: url("./images/logo-dark.svg") url("./images/logo-light.svg");
+}

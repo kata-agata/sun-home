@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry:{
@@ -27,13 +28,14 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          { loader: "style-loader" },
+          { loader: MiniCSSExtractPlugin.loader },
+        //  { loader: "style-loader" },
           { loader: "css-loader",
-            options: {
-              modules: {
-                localIdentName: "[path][name]__[local]"
-              },
-            }
+            // options: {
+            //   modules: {
+            //     localIdentName: "[path][name]__[local]"
+            //   },
+            // }
           },
           { loader: 'postcss-loader'},
           { loader: "sass-loader"}
@@ -50,7 +52,7 @@ module.exports = {
         loader: 'file-loader',
         options: {
           esModule: false,
-          name: 'images/[name]-[hash:8].[ext]',
+          name: 'images/[name].[ext]',
         },
       },
       {
@@ -64,37 +66,44 @@ module.exports = {
           }
         }
       },
-      {
-        test: /\.hbs$/,
-        use: [
-          {
-            loader: "handlebars-loader",
-            query: {
-              inlineRequires: "/images/",
-              partialsDir: [
-                path.join(__dirname, "/../src/views/partials")
-              ],
-              layoutsDir: [
-                path.join(__dirname, "/../src/views/layouts")
-              ]
-            }
-          }
-        ]
-      },
+      { test: /\.(ttf|otf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
+        loader: 'file-loader?name=fonts/[name].[ext]' }
+        //removed svg from fonts because was problem with svg images loading
+       // {
+       //   test: /\.hbs$/,
+       //    use: [
+       //      {
+       //        loader: "handlebars-loader",
+       //        query: {
+       //          inlineRequires: "/images/",
+       //          partialsDir: [
+       //            path.join(__dirname, "/../src/views/partials")
+       //          ],
+       //          layoutsDir: [
+       //            path.join(__dirname, "/../src/views/layouts")
+       //          ]
+       //        }
+       //      }
+       //    ]
+       // },
     ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.LoaderOptionsPlugin({
-      options: {
-        handlebarsLoader: {}
-      }
-    }),
-    new HtmlWebpackPlugin({
-       filename: "index.html",
-       template: './src/views/index.hbs',
-       title: "Sun-home",
-      //      chunks: ["main"]
+    // new webpack.LoaderOptionsPlugin({
+    //   options: {
+    //     handlebarsLoader: {}
+    //   }
+    // }),
+    // new HtmlWebpackPlugin({
+    //    //filename: "index.html",
+    //    //template: './src/views/index.hbs',
+    //    //title: "Sun-home",
+    //   //      chunks: ["main"]
+    // }),
+    new MiniCSSExtractPlugin({
+      //filename: "[name]-[contenthash].css"
+      filename: "[name].css"
     }),
   ]
 }

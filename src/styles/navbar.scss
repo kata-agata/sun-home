@@ -41,19 +41,12 @@ $navbar-dark-active-color: $magentaColor;
 //---------------custom styling of link in nav-item
 .nav-link.sun-link {
   @extend .h6;
-  //color: $concreteColor;
-//  $navbar-light-color: $concreteColor;
   &:hover{
     text-shadow: 0px 0px 5px $magentaColor;
   }
 }
 .nav-item.active {
   text-shadow: 0px 0px 5px $magentaColor;
-}
-
-//-------------remove default border of hamburger menu
-.navbar-toggler:focus {
-    outline: none;
 }
 
 .navbar{
@@ -67,10 +60,13 @@ $navbar-dark-active-color: $magentaColor;
 
 //----------------------navbar toggler button animation and styling
 $toggler-width: 30px;
-$toggler-height: 30px;
+
+.navbar-toggler:focus {
+    outline: none;
+}
 
 .navbar-toggler{
-  height: $toggler-height;
+  height: 30px;
   width: $toggler-width;
 }
 
@@ -110,29 +106,7 @@ $toggler-height: 30px;
 
 .navbar-toggler[aria-expanded="true"] .icon-bar:nth-child(3){
   transform: rotate(-45deg);
-  top: 3*7px+4px;
+  top: 3*7px+0.5px;
   left:0;
   width: $toggler-width*1.41;
 }
-
-// .navbar-toggler .top-bar {
-//   transform: rotate(45deg);
-//   transform-origin: 10% 10%;
-// }
-// .navbar-toggler .middle-bar {
-//   opacity: 0;
-// }
-// .navbar-toggler .bottom-bar {
-//   transform: rotate(-45deg);
-//   transform-origin: 10% 90%;
-// }
-//
-// .navbar-toggle.collapsed .top-bar {
-//   transform: rotate(0);
-// }
-// .navbar-toggle.collapsed .middle-bar {
-//   opacity: 1;
-// }
-// .navbar-toggle.collapsed .bottom-bar {
-//   transform: rotate(0);
-// }

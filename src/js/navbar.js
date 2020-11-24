@@ -1,15 +1,15 @@
-const toggleActive = () => {
-  const navItems = document.querySelectorAll('.nav-item');
-
-  for(let i=0; i<navItems.length; i++){
-    navItems[i].addEventListener('click',()=>{
-      for(let j=0; j<navItems.length; j++){
-        navItems[j].classList.remove("active");
-      }
-      navItems[i].classList.add('active');
-    })
-  }
-}
+// const toggleActive = () => {
+//   const navItems = document.querySelectorAll('.nav-link');
+//
+//   // for(let i=0; i<navItems.length; i++){
+//   //   navItems[i].addEventListener('click',()=>{
+//   //     for(let j=0; j<navItems.length; j++){
+//   //       navItems[j].classList.remove("active");
+//   //     }
+//   //     navItems[i].classList.add('active');
+//   //   })
+//   // }
+// }
 
 const moveInCollapse = ()=>{
   const hamburgerButton = document.querySelector('.navbar-toggler');
@@ -39,6 +39,6 @@ const moveInCollapse = ()=>{
 
 
 module.exports = {
-    toggleActive: toggleActive,
+    // toggleActive: toggleActive,
     moveInCollapse: moveInCollapse
 };

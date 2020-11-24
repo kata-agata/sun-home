@@ -45,7 +45,7 @@ $navbar-dark-active-color: $magentaColor;
     text-shadow: 0px 0px 5px $magentaColor;
   }
 }
-.nav-item.active {
+.nav-item .nav-link.active {
   text-shadow: 0px 0px 5px $magentaColor;
 }
 

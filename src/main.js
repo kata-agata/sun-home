@@ -9,7 +9,7 @@ require('bootstrap');
 const navbar = require('./js/navbar');
 //require('bootstrap/dist/js/bootstrap');
 
-navbar.toggleActive();
+// navbar.toggleActive();
 navbar.moveInCollapse();
 
 // require("./views/index.hbs");

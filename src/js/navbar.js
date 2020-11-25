@@ -1,44 +1,55 @@
-// const toggleActive = () => {
-//   const navItems = document.querySelectorAll('.nav-link');
-//
-//   // for(let i=0; i<navItems.length; i++){
-//   //   navItems[i].addEventListener('click',()=>{
-//   //     for(let j=0; j<navItems.length; j++){
-//   //       navItems[j].classList.remove("active");
-//   //     }
-//   //     navItems[i].classList.add('active');
-//   //   })
-//   // }
-// }
 
-const moveInCollapse = ()=>{
-  const hamburgerButton = document.querySelector('.navbar-toggler');
-  const navbarMenu = document.querySelector('.navbar');
-  const logo = document.querySelector('.navbar-brand>img');
-  let expanded;
+const hamburgerButton = document.querySelector('.navbar-toggler');
+const navbarMenu = document.querySelector('.navbar');
+const logo = document.querySelector('.navbar-brand>img');
+let expanded;
+let scrollY;
+let innerH;
+
+
+//---------navbar behavior
+const menuDisplay = ()=>{
+  //----on scroll change navbar theme
+  window.addEventListener('scroll', ()=>{
+    innerH = window.innerHeight;
+    scrollY = window.scrollY;
+
+    console.log(innerH, scrollY);
+
+    if(scrollY > innerH/2){
+      changeToDarkMenu();
+    } else {
+      changeToLightMenu();
+    }
+  });
+
+  //----on toggler button click (screen smaller than md) change navbar theme when collapse
   hamburgerButton.addEventListener('click',()=>{
-    expanded = hamburgerButton.getAttribute('aria-expanded');
-    console.log(expanded);
-    if(expanded == "true"){
-    //  setTimeout(()=>{
-        //navbarMenu.classList.toggle('bg-dark');
-      //},360);
-      navbarMenu.classList.remove('navbar-dark','bg-dark');
-      navbarMenu.classList.add('navbar-light');
-      console.log('closed');
-      logo.src = "images/logo-dark.svg";
-     }else{
-       //navbarMenu.classList.add('bg-dark');
-       navbarMenu.classList.remove('navbar-light');
-       navbarMenu.classList.add('navbar-dark','bg-dark');
-       logo.src = "images/logo-light.svg";
-     }
-  })
+    if(scrollY<innerH/2){
+      expanded = hamburgerButton.getAttribute('aria-expanded');
+      if(expanded == "true"){
+        changeToLightMenu();
+      }else{
+        changeToDarkMenu();
+      }
+    }
+  });
+
 }
 
+//--------chaning themes of navbarMenu
+const changeToLightMenu = function(){
+  navbarMenu.classList.remove('navbar-dark','bg-dark');
+  navbarMenu.classList.add('navbar-light');
+  logo.src = "images/logo-dark.svg";
+}
 
+const changeToDarkMenu = function(){
+  navbarMenu.classList.remove('navbar-light');
+  navbarMenu.classList.add('navbar-dark','bg-dark');
+  logo.src = "images/logo-light.svg";
+}
 
 module.exports = {
-    // toggleActive: toggleActive,
-    moveInCollapse: moveInCollapse
+    menuDisplay: menuDisplay
 };

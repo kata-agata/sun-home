@@ -6,6 +6,12 @@
 @import "styles/navbar.scss";
 //rgb(177, 177, 177) ;
 
+
+//------smooth scroll when navigate to section using links
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-image: url("./images/concrete-bg.jpg");
   background-color: $concreteColor;

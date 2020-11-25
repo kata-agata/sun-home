@@ -10,7 +10,7 @@ const navbar = require('./js/navbar');
 //require('bootstrap/dist/js/bootstrap');
 
 // navbar.toggleActive();
-navbar.moveInCollapse();
+navbar.menuDisplay();
 
 // require("./views/index.hbs");
 // require("./views/signin.hbs");

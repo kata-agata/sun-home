@@ -7,6 +7,7 @@ const $ = require('jquery');
 global.$ = global.jQuery = $;
 require('bootstrap');
 const navbar = require('./js/navbar');
+import {throttle} from 'lodash';
 //require('bootstrap/dist/js/bootstrap');
 
 // navbar.toggleActive();

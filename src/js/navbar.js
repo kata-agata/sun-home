@@ -1,4 +1,5 @@
 
+
 const hamburgerButton = document.querySelector('.navbar-toggler');
 const navbarMenu = document.querySelector('.navbar');
 const logo = document.querySelector('.navbar-brand>img');
@@ -10,7 +11,7 @@ let innerH;
 //---------navbar behavior
 const menuDisplay = ()=>{
   //----on scroll change navbar theme
-  window.addEventListener('scroll', ()=>{
+  window.addEventListener('scroll', _.throttle(()=>{
     innerH = window.innerHeight;
     scrollY = window.scrollY;
 
@@ -21,7 +22,7 @@ const menuDisplay = ()=>{
     } else {
       changeToLightMenu();
     }
-  });
+  },200));
 
   //----on toggler button click (screen smaller than md) change navbar theme when collapse
   hamburgerButton.addEventListener('click',()=>{

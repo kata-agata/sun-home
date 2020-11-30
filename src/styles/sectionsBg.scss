@@ -1,0 +1,79 @@
+.section-no-overflow {
+  height:100vh;
+  overflow: hidden;
+}
+
+.section-adjust {
+  min-height:100vh;
+
+  overflow-y: hidden;
+}
+
+// #home:after {
+//     position: absolute;
+//
+//     top:0;
+//     left:0;
+//     bottom:0;
+//     right:0;
+//     background: radial-gradient(50% 105% at 0% 50%, $concreteColor 0%, rgba(255,255,255,0) 100%);
+// }
+.home-text{
+  z-index:400;
+}
+
+
+
+.overlay {
+    position:absolute;
+    content:"";
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background: radial-gradient(50% 105% at 0% 50%, $concreteColor 0%, rgba(255,255,255,0) 100%);
+    z-index: 300;
+}
+
+
+@mixin home-container($animationName, $time){
+  position:absolute;
+  content:"";
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  // height: 100%;
+  background-image: url("./images/home.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: $animationName $time;
+  animation-fill-mode: forwards;// animation style at the end stays visible
+  animation-timing-function: linear;
+  z-index:200;
+}
+
+@include media-breakpoint-down(xl){
+  .home-background{
+    @include home-container(moveBackgroundImage, 15s);
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .home-background{
+      @include home-container(scaleBackgroundImage, 20s);
+  }
+}
+
+.column-left{
+  background-color: $darkGreyColorTransparent;
+}
+
+.column-height-100{
+    min-height: 100vh;
+}
+
+.jakis-tam{
+    background-image: url("./images/aranzacja.jpg");
+}

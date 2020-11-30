@@ -3,12 +3,26 @@
 @import "styles/fonts.scss";
 @import "styles/colors.scss";
 @import "styles/animations.scss";
+
 @import "styles/headers.scss";
 @import "styles/navbar.scss";
 
+@import "styles/images.scss";
 //rgb(177, 177, 177) ;
 
 
+
+
+//---------------------home section
+
+
+
+$enable-responsive-font-sizes: true;
+@import "bootstrap/scss/bootstrap.scss";
+@import "styles/sectionsBg.scss";
+@import "styles/button.scss";
+@import "styles/carousels.scss";
+@import "styles/lists.scss";
 //------smooth scroll when navigate to section using links
 html {
   scroll-behavior: smooth;
@@ -18,11 +32,15 @@ body {
   background-image: url("./images/concrete-bg.jpg");
   background-color: $concreteColor;
   font-family: $bodyFont;
+  color: $lightGreyColor;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
   line-height: 160%;
+  z-index: 0;
+  overflow-x: hidden;
 }
 
-$enable-responsive-font-sizes: true;
-@import "bootstrap/scss/bootstrap.scss";
+#home {
+  color: $darkColor;
+}

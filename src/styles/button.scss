@@ -1,4 +1,13 @@
-.btn {
-  background-color: yellow;
-  color: red;
+
+
+$btn-font-family: $bodyFont;
+
+.btn{
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: 3px solid $magentaColor;
+  color: $darkColor;
+  border-radius: 5px;
+  font-size: 0.75rem;
 }

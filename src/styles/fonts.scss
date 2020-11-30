@@ -1,5 +1,11 @@
 $headersFont: 'BioRhyme';
 $bodyFont: 'Space Mono';
+$small-text: 12px;
+
+.small-text{
+  font-size: $small-text;
+  line-height: 140%;
+}
 
 /* biorhyme-300 - latin-ext */
 @font-face {

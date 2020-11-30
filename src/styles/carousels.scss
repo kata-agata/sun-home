@@ -1,0 +1,109 @@
+// grid
+// ********** xs < 576px
+// ********** sm < 768px
+// ********** md < 992px
+// ********** lg < 1200px
+// ********** xl>=1200px
+
+#offer-carousel .carousel-inner{
+  margin-left: auto;
+  margin-right: auto;
+
+    @include media-breakpoint-only(xl){
+      width: 70%;
+      max-height: 70vh;
+    }
+}
+
+// ---- carousel buttons styling and grid
+#offer-carousel .carousel-indicators{
+
+  @include media-breakpoint-only(xs){
+    display: list-item;
+  }
+
+  @include media-breakpoint-down(sm){
+    position: absolute;
+    display: grid;
+    justify-content: flex-start;
+    margin-left: 0;
+  }
+
+@include media-breakpoint-only(md){
+  position: relative;
+  display: grid;
+  grid-row: auto;
+}
+
+
+  @include media-breakpoint-up(lg){
+    position: relative;
+    display: inline-block;
+      text-align: center;
+  }
+}
+
+#offer-carousel .carousel-indicators li {
+    width: auto;
+    height: auto;
+    text-indent: unset;
+    background-color: transparent;
+    letter-spacing: 0.05em;
+    margin:5px;
+
+    @extend .btn;
+
+    @include media-breakpoint-only(xs){
+      color: $darkColor;
+      padding: 0.15rem 0.4rem;
+      font-size: 0.6rem;
+      margin:2px;
+      margin-left:0;
+      justify-content: flex-start;
+      text-align: left;
+      border:  2px solid transparent;
+      border-radius: 0;
+      background-color: rgb(255,255,255,0);
+      opacity: 1;
+
+      &:hover {
+        border: 2px solid $magentaColor;
+        background-color: transparent !important;
+        text-align: left;
+        color: $darkGreyColor !important;
+      }
+      &.active{
+        padding: 0.15rem 0.4rem;
+        font-size: 0.6rem;
+        border:  2px solid transparent;
+        border-radius: 0;
+        text-align: left;
+      }
+    }
+
+    @include media-breakpoint-only(sm){
+      opacity: 0.5;
+    }
+
+    @include media-breakpoint-up(md){
+
+      opacity: 0.8;
+    }
+
+    &:hover {
+      color: $lightColor;
+      text-decoration: none;
+      background-color: $magentaColor;
+      opacity: 0.8;
+    }
+
+    &.active{
+        @extend .btn;
+        color: $lightColor;
+        background-color: $magentaColor;
+        letter-spacing: 0.1em;
+        opacity: 1;
+    }
+
+
+}

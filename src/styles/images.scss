@@ -1,0 +1,41 @@
+.diamond {
+  height: 400px;
+  width: 400px;
+
+  outline: 1px solid black;
+  position: absolute;
+  top:50%;
+  left:0;
+  transform: translateY(-50%) translateX(25%) rotate(45deg);
+  overflow: hidden;
+  z-index: 200;
+
+
+}
+.diamond img{
+  position: relative;
+  height: 142%;
+  left:0;
+  transform: translateX(-15%) rotate(-45deg);
+  z-index: 100;
+  margin: -19%;
+}
+
+
+.vert .carousel-item-next.carousel-item-left,
+.vert .carousel-item-prev.carousel-item-right {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+}
+
+.vert .carousel-item-next,
+.vert .active.carousel-item-right {
+    -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100% 0);
+}
+
+.vert .carousel-item-prev,
+.vert .active.carousel-item-left {
+-webkit-transform: translate3d(0,-100%, 0);
+        transform: translate3d(0,-100%, 0);
+}

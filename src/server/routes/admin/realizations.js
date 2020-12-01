@@ -1,6 +1,25 @@
 const express = require('express');
 const Realization = require('./../../../models/realization');
 const router = express.Router();
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
+
+// SET STORAGE
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    const { id } = req.params;
+    const path = `./uploads/${id}`
+    fs.mkdirSync(path, { recursive: true })
+    cb(null, path)
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+  }
+})
+
+var upload = multer({ storage: storage })
+//var upload = multer({dest: 'uploads/'})
 
 //------------LIST ALL REALIZATIONS
 router.get('/', async (req,res)=>{
@@ -55,6 +74,22 @@ router.delete('/:id', async (req,res) => {
   await Realization.findByIdAndDelete(req.params.id);
   res.redirect('/sun/adminPanel/realizations');
 })
+
+//Uploading multiple files
+router.post('/uploadmultiple/:id', upload.array('myFiles', 12), (req, res, next) => {
+  const files = req.files;
+  const id = req.params.id;
+  console.log(id)
+  if (!files) {
+    const error = new Error('Please choose files');
+    error.httpStatusCode = 400;
+    return next(error);
+  }
+    res.send(files);
+})
+
+
+
 
 //------------ MIDDLEWARE FUNCTION, SAME FOR EDIT AND NEW
 function saveAndRedirect(path){

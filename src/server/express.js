@@ -9,6 +9,7 @@ const dateFormat = require('../views/helpers/dateFormat');
 const methodOverride = require('method-override');
 
 
+
 const server = express();
 
 mongoose.connect('mongodb://localhost/blog',{
@@ -57,11 +58,20 @@ server.use(express.urlencoded({extended: false})); // to access parameters of fo
 server.use(methodOverride('_method')); //override delete/put method
 
 //handlebars.registerPartial('home', path.join(__dirname, "/../views/partials/_home"));
+
+
+
+
+
+
 // ----------- paths
 
 server.use('/sun/adminPanel', authRouter); // must go after urlencoded
 server.use('/sun/adminPanel/realizations', realizationsRouter);
 server.use(mainRouter);
+
+
+
 
 const PORT = process.env.PORT || 8080;
 server.listen(PORT, ()=>{

@@ -5,6 +5,7 @@ const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const isProd = process.env.NODE_ENV === "production";
 const MinifyPlugin = require("babel-minify-webpack-plugin");
+
 module.exports = env => {
   return {
     entry:{
@@ -33,19 +34,13 @@ module.exports = env => {
           use: [
             { loader: MiniCSSExtractPlugin.loader },
             { loader: "css-loader",
-              options: {
-                modules: {
-                  localIdentName: "[path][name]__[local]"
-                },
-              }
+              // options: {
+              //   modules: {
+              //     localIdentName: "[path][name]__[local]"
+              //   },
+              // }
             },
-
-            {
-              loader: 'postcss-loader',
-            },
-
-
-
+            { loader: 'postcss-loader'},
             { loader: "sass-loader"}
           ]
         },
@@ -60,7 +55,8 @@ module.exports = env => {
                 loader: 'file-loader',
                 options: {
                   esModule: false,
-                  name: 'images/[name]-[hash:8].[ext]',
+                  //name: 'images/[name]-[hash:8].[ext]',
+                  name: 'images/[name].[ext]',
                 },
               },
         {
@@ -83,6 +79,8 @@ module.exports = env => {
             }
           ]
         },
+        { test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+          loader: 'file-loader?name=fonts/[name].[ext]' }
       ]
     },
     plugins: [
@@ -90,7 +88,7 @@ module.exports = env => {
         filename: "[name]-[contenthash].css"
       }),
       new HtmlWebpackPlugin({
-        template: "./src/index.hbs",
+        //template: "./src/views/index.hbs",
         title: "Sun-home"
       }),
       new webpack.DefinePlugin({

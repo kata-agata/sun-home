@@ -1,0 +1,15 @@
+
+
+@keyframes scaleBackgroundImage{
+@for $i from 1 through 10{
+  #{$i*10}% { background-size: #{(98 + 2*$i)*1%}}
+  // @debug "#{$i*10}% { background-size: #{(98 + 2*$i)*1%}}"
+ };
+}
+
+@keyframes moveBackgroundImage{
+@for $i from 1 through 10{
+  #{$i*10}% { background-position-x: #{(50-$i*1.2+1)*1%}}
+  // @debug "#{$i*10}% { background-size: #{(98 + 2*$i)*1%}}"
+ };
+}

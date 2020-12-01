@@ -20,6 +20,7 @@
           <td>{{this.title}}</td>
           <td>{{dateFormat this.createdAt}}</td>
           <td>{{this.description}}</td>
+          <td>{{this.topImage}}</td>
           <td colspan="2">
               <a href="realizations/{{this.slug}}" class="btn btn-primary pull-left">Pokaż</a>
               <form class="d-inline" action="/sun/adminPanel/realizations/{{this._id}}?_method=DELETE" method="POST">

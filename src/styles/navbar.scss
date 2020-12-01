@@ -1,0 +1,103 @@
+//------CUSTOMIZING BOOTSTRAP VARIABLES
+  //------- active nav-item
+$navbar-light-active-color: $darkColor;
+  //-------  nav-item on hover
+$navbar-light-hover-color: $concreteColor;
+  //------- toggler styling
+$navbar-light-toggler-border-color: transparent;
+
+$navbar-light-color: $concreteColor;
+$navbar-light-hover-color: $concreteColor;
+$navbar-light-toggler-border-color:  none;
+$navbar-light-active-color: $darkColor;
+// $navbar-light-disabled-color:       rgba($black, .3) !default;
+// $navbar-light-toggler-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><path stroke='#{$navbar-light-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
+
+
+$navbar-dark-color: $lightColor;
+$navbar-dark-hover-color:$lightColor;
+$navbar-dark-toggler-border-color:  none;
+$navbar-dark-active-color: $magentaColor;
+// $navbar-dark-disabled-color:        rgba($white, .25) !default;
+// $navbar-dark-toggler-icon-bg:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><path stroke='#{$navbar-dark-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
+
+
+//---------------custom styling of link in nav-item
+.nav-link.sun-link {
+  @extend .h6;
+  &:hover{
+    text-shadow: 0px 0px 5px $magentaColor;
+  }
+}
+.nav-item .nav-link.active {
+  text-shadow: 0px 0px 5px $magentaColor;
+}
+//---------------------------------------------------------------------
+
+.logo{
+    background-image: url("./images/logo-dark.svg") url("./images/logo-light.svg");
+}
+
+
+//----------------------navbar toggler button animation and styling
+$toggler-width: 30px;
+
+.navbar-toggler:focus {
+    outline: none;
+}
+
+.navbar-toggler{
+  height: 30px;
+  width: $toggler-width;
+}
+
+.navbar-toggler .icon-bar {
+  position: relative;
+  display: block;
+  padding: 0;
+  left:0;
+  height: 4px;
+  width: $toggler-width - 1;
+  border-radius: 2px;
+  transform: rotate(0deg);
+  opacity: 1;
+  transition: all 0.2s;
+  z-index:300;
+  background-color: $magentaColor;
+
+}
+
+@for $i from 1 through 3{
+  .icon-bar:nth-child(#{$i}){
+    top: $i*7px-1*7px;
+    transform-origin: left center;
+   }
+}
+
+.navbar-toggler[aria-expanded="true"] .icon-bar:nth-child(1){
+  transform: rotate(45deg);
+  top:0;
+  left:0;
+  width: $toggler-width*1.41;
+}
+
+.navbar-toggler[aria-expanded="true"] .icon-bar:nth-child(2){
+  opacity: 0;
+}
+
+.navbar-toggler[aria-expanded="true"] .icon-bar:nth-child(3){
+  transform: rotate(-45deg);
+  top: 3*7px+0.5px;
+  left:0;
+  width: $toggler-width*1.41;
+}
+//--------------------------------------------------------------------------
+
+//----------navbar transition when colapsing
+.navbar{
+  transition: background-color 0.35s ease-in-out;
+}
+//----------navbar transition when changing color
+.bg-dark{
+  transition: background-color 1s ease-in-out;
+}

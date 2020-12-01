@@ -1,0 +1,25 @@
+#distinction-list li{
+  position: relative;
+  padding-top:15px;
+
+  @include media-breakpoint-only(xs){
+    font-size: 0.75rem;
+  }
+
+  @include media-breakpoint-only(sm){
+    font-size: 0.85rem;
+  }
+
+}
+
+#distinction-list li:before{
+  position: absolute;
+  top:0;
+  height: 20px;
+  width:20px;
+  content: "";
+  background: url('./images/sun.svg') no-repeat center top;
+  background-size: 20px 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}

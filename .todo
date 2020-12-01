@@ -23,3 +23,24 @@ My tasks:
     ☐ adding of users only for admin
     ☐ validation of password
     ☐ redirect to admin.hbs after signin
+Main Page:
+  Menu:
+    ☐ add scrollspy
+    Vertical:
+        ✔ colors @done(2020-11-24 11:51) @project(Main Page / Menu / Vertical)
+        ✔ hover on item @done(2020-11-24 11:51) @project(Main Page / Menu / Vertical)
+        ✔ active item @done(2020-11-24 11:51) @project(Main Page / Menu / Vertical)
+        ✔ dark background when collapse @done(2020-11-24 11:51) @project(Main Page / Menu / Vertical)
+        ✔ hamburger icon animation @done(2020-11-24 13:34) @project(Main Page / Menu / Vertical)
+        ☐ when resizing on collapse => change navbar-dark theme to light
+    Horizontal:
+        ✔ colors @done(2020-11-24 11:51) @project(Main Page / Menu / Horizontal)
+        ✔ hover on item @done(2020-11-24 11:51) @project(Main Page / Menu / Horizontal)
+        ✔ active item @done(2020-11-24 11:51) @project(Main Page / Menu / Horizontal)
+        ☐ change theme and resize when on other tab than home
+    Home Page:
+      ☐ add background image
+      ☐ add background image animation
+      ☐ position divs with text
+      ☐ add carousel to question divs
+      ☐ styling

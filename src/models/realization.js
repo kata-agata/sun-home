@@ -18,6 +18,10 @@ const realizationSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  topImage:{
+    type: String,
+    required: true
+  },
   createdAt: {
     type: Date,
     default: Date.now

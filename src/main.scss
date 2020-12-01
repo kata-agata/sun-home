@@ -23,6 +23,7 @@ $enable-responsive-font-sizes: true;
 @import "styles/button.scss";
 @import "styles/carousels.scss";
 @import "styles/lists.scss";
+@import "styles/cards.scss";
 //------smooth scroll when navigate to section using links
 html {
   scroll-behavior: smooth;

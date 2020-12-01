@@ -62,7 +62,9 @@ function saveAndRedirect(path){
     let realization = req.realization;
     realization.title = req.body.title;
     realization.description = req.body.description;
+    realization.topImage = req.body.topImage;
     realization.markdown = req.body.markdown;
+    console.log(realization);
     try{
       realization = await realization.save();
       realization = realization.toJSON();

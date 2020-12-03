@@ -19,5 +19,14 @@
     {{{realization.topImage}}}
   </div>
 
+
+  <div class="card-columns">
+    {{#each realization.images}}
+    <div class="card">
+      <img src="\\{{this}}" class="card-img-top" alt="...">
+    </div>
+    {{/each}}
+  </div>
+
   </div>
 </div>

@@ -68,6 +68,7 @@
 
 .column-left{
   background-color: $darkGreyColorTransparent;
+  color: $lightColor;
 }
 
 .column-height-100{
@@ -76,4 +77,8 @@
 
 .jakis-tam{
     background-image: url("./images/aranzacja.jpg");
+}
+
+.jakis-tam2{
+    background-image: url("./images/next-magenta.svg");
 }

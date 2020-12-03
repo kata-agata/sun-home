@@ -1,8 +1,108 @@
 .card-columns {
+  grid-column-gap: 0.5rem;
+  column-gap: 1rem;
+
+  @include media-breakpoint-only(sm) {
+    column-count: 2;
+  }
+  @include media-breakpoint-only(md) {
+    column-count: 3;
+  }
   @include media-breakpoint-only(lg) {
     column-count: 4;
   }
   @include media-breakpoint-only(xl) {
     column-count: 5;
+  }
+}
+
+
+
+.realization-card{
+  margin-bottom: 2.5%;
+  .card {
+    overflow: hidden;
+    border: none;
+    background: black;
+
+    .layer{
+      position: absolute;
+      //background: linear-gradient(90.37deg, #FF7F0A 0.3%, #FF00FF 72.18%, #8D0267 99.66%), #FF00FF;
+      //background: linear-gradient(90deg, #8D0267 49.78%, #FF00FF 91.19%), #FF00FF;
+      //background: linear-gradient(90.37deg, #FF00FF 0.3%, #8D0267 78.93%, #56013F 99.66%);
+      background: linear-gradient(90.37deg, #FF7F0A 0.3%, #FF00FF 99.66%);
+      height: 100%;
+      width: 100%;
+      z-index:100;
+      top: calc(100% - 4px);
+      transition: 0.5s ease-in-out;
+    }
+
+
+    .card-img {
+      position: relative;
+      z-index: 101;
+    }
+
+    .card-body {
+      position: relative;
+      z-index: 101;
+
+      .card-title{
+        color: $magentaColor;
+        transition: 0.6s ease-in-out;
+      }
+
+      .card-text{
+        color: $lightColor;
+        transition: 0.5s ease-in-out;
+        font-size: 12px;
+      }
+    }
+
+    .card-footer{
+      z-index: 101;
+      border: none;
+
+
+      .btn{
+        border: none;
+        height: 2.5em;
+
+        &:focus{
+          box-shadow: none;
+        }
+
+        .fa-chevron-circle-right{
+          height: 2em;
+          width: 2em;
+          transform: rotate(0deg);
+          transition: all 0.5s ease-in;
+          transition-delay: 0.7s;
+        }
+      }
+    }
+
+    &:hover{
+      .layer{
+        top: 0;
+      }
+      .card-title{
+        color: $lightColor;
+      }
+      .card-text{
+        color: $darkColor;
+      }
+      .card-footer{
+        .btn{
+          .fa-chevron-circle-right{
+            transform: rotate(360deg);
+            height: 2.5em;
+            width: 2.5em;
+          }
+        }
+      }
+    }
+
   }
 }

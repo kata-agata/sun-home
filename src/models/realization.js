@@ -22,6 +22,9 @@ const realizationSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  images: {
+    type: Array,
+  },
   createdAt: {
     type: Date,
     default: Date.now

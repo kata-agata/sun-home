@@ -1,6 +1,28 @@
 const express = require('express');
 const Realization = require('./../../../models/realization');
 const router = express.Router();
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
+
+// SET STORAGE
+//------ uploading multiple files into directory /uploads/{realization.slug}
+//------ create folder if not exist
+//------ change file name
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    const { slug } = req.params;
+    const path = `./dist/${slug}`
+    fs.mkdirSync(path, { recursive: true })
+    cb(null, path)
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+  }
+})
+
+var upload = multer({ storage: storage })
+//var upload = multer({dest: 'uploads/'})
 
 //------------LIST ALL REALIZATIONS
 router.get('/', async (req,res)=>{
@@ -56,6 +78,39 @@ router.delete('/:id', async (req,res) => {
   res.redirect('/sun/adminPanel/realizations');
 })
 
+//Uploading multiple files
+router.post('/uploadmultiple/:slug', upload.array('myFiles', 12), async (req, res, next) => {
+  const files = req.files;
+  let realization = await Realization.findOne({slug: req.params.slug});
+  const newImages = files.map( f => {
+    let url = f.path;
+    url = url.replace('dist', 'images');
+    return url;
+  });
+  realization.images = [...realization.images, ...newImages];
+  console.log(realization);
+  try{
+    realization = await realization.save();
+    realization = realization.toJSON();
+    console.log(files);
+  } catch(e){
+    console.log(e);
+    res.send(files);
+  }
+
+
+  const slug = req.params.slug;
+  if (!files) {
+    const error = new Error('Please choose files');
+    error.httpStatusCode = 400;
+    return next(error);
+  }
+  res.redirect(`/sun/adminPanel/realizations/${slug}`);
+})
+
+
+
+
 //------------ MIDDLEWARE FUNCTION, SAME FOR EDIT AND NEW
 function saveAndRedirect(path){
   return async (req,res) => {
@@ -63,6 +118,7 @@ function saveAndRedirect(path){
     realization.title = req.body.title;
     realization.description = req.body.description;
     realization.topImage = req.body.topImage;
+    realization.images = [];
     realization.markdown = req.body.markdown;
     console.log(realization);
     try{

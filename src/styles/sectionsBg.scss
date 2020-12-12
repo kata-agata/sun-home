@@ -1,12 +1,11 @@
 .section-no-overflow {
   height:100vh;
-  overflow: hidden;
+  //overflow: hidden;
 }
 
 .section-adjust {
   min-height:100vh;
-
-  overflow-y: hidden;
+  //overflow-y: hidden;
 }
 
 // #home:after {
@@ -33,6 +32,7 @@
     bottom:0;
     background: radial-gradient(50% 105% at 0% 50%, $concreteColor 0%, rgba(255,255,255,0) 100%);
     z-index: 300;
+    border-bottom: 1px solid $magentaColor;
 }
 
 
@@ -57,6 +57,8 @@
 section {
   background-image: url("./images/concrete-bg.jpg");
   background-color: $concreteColor;
+  border-bottom: 1px solid $magentaColor;
+  position: relative;
 }
 
 @include media-breakpoint-down(xl){

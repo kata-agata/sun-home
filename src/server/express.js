@@ -13,7 +13,7 @@ const methodOverride = require('method-override');
 const server = express();
 
 
-mongoose.connect('mongodb+srv://xxxx@cluster0.sepqc.mongodb.net/sun-home?retryWrites=true&w=majority',{
+mongoose.connect('mongodb+srv://admin:12345@cluster0.sepqc.mongodb.net/sun-home?retryWrites=true&w=majority',{
     //mongoose.connect('mongodb://localhost/blog',{
     useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true
   }, function(err){

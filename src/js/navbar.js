@@ -42,13 +42,13 @@ const menuDisplay = ()=>{
 const changeToLightMenu = function(){
   navbarMenu.classList.remove('navbar-dark','bg-dark');
   navbarMenu.classList.add('navbar-light');
-  logo.src = "images/logo-dark.svg";
+  logo.src = "/images/logo-dark.svg";
 }
 
 const changeToDarkMenu = function(){
   navbarMenu.classList.remove('navbar-light');
   navbarMenu.classList.add('navbar-dark','bg-dark');
-  logo.src = "images/logo-light.svg";
+  logo.src = "/images/logo-light.svg";
 }
 
 module.exports = {

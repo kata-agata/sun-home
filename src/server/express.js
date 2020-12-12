@@ -12,9 +12,37 @@ const methodOverride = require('method-override');
 
 const server = express();
 
-mongoose.connect('mongodb://localhost/blog',{
-  useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true
+
+mongoose.connect('mongodb+srv://xxxx@cluster0.sepqc.mongodb.net/sun-home?retryWrites=true&w=majority',{
+    //mongoose.connect('mongodb://localhost/blog',{
+    useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true
+  }, function(err){
+    if (err) return console.error(err);
+  });
+
+
+mongoose.connection.on("error", (e) => {
+  console.log("mongo connect error!");
 });
+mongoose.connection.on("connected", () => {
+  console.log("connected to mongo");
+});
+
+function errorHandler (err, req, res, next) {
+  if (res.headersSent) {
+    return next(err)
+  }
+  res.status(500)
+  res.render('error', { error: err })
+}
+
+// mongoose.connect("mongodb://@ds213645.mlab.com:13645/techblog", {
+//   useNewUrlParser: true,
+//   auth: {
+//     user: "user",
+//     password: "pass"
+//   }
+// });
 
 const isProd = process.env.NODE_ENV ==="production";
 
@@ -66,9 +94,22 @@ server.use(methodOverride('_method')); //override delete/put method
 
 // ----------- paths
 
-server.use('/sun/adminPanel', authRouter); // must go after urlencoded
-server.use('/sun/adminPanel/realizations', realizationsRouter);
-server.use(mainRouter);
+server.use('/testapp/adminPanel', authRouter); // must go after urlencoded
+server.use('/testapp/adminPanel/realizations', realizationsRouter);
+server.use('/testapp', mainRouter);
+
+// server.get('*', function (req, res, next) {
+//   const error = new Error(
+//     `${req.ip} tried to access ${req.originalUrl}`,
+//   );
+//   error.statusCode = 301;
+//   next(error);
+// });
+
+server.use((error, req, res, next) => {
+  if (!error.statusCode) error.statusCode = 500;
+  return res.status(error.statusCode);
+});
 
 
 
@@ -76,5 +117,5 @@ server.use(mainRouter);
 const PORT = process.env.PORT || 8080;
 server.listen(PORT, ()=>{
   console.log(`Server is listening on http://localhost:${PORT}`);
-    console.log(__dirname);
+  console.log(__dirname);
 });

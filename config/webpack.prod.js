@@ -13,6 +13,7 @@ module.exports = env => {
         "./src/main.js"]
     },
     mode:"production",
+    devtool: 'source-map',
     output:{
       filename: "[name]-bundle.js", //[name] - taken from main in entry
       path: path.resolve(__dirname, "../dist"),
@@ -70,27 +71,27 @@ module.exports = env => {
             }
           }
         },
-        {
-          test: /\.hbs$/,
-          use: [
-            {
-              loader: "handlebars-loader",
-              query: { inlineRequires: "/images/"}
-            }
-          ]
-        },
-        { test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        // {
+        //   test: /\.hbs$/,
+        //   use: [
+        //     {
+        //       loader: "handlebars-loader",
+        //       query: { inlineRequires: "/images/"}
+        //     }
+        //   ]
+        // },
+        { test: /\.(ttf|otf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
           loader: 'file-loader?name=fonts/[name].[ext]' }
       ]
     },
     plugins: [
       new MiniCSSExtractPlugin({
-        filename: "[name]-[contenthash].css"
+        filename: "[name].css"
       }),
-      new HtmlWebpackPlugin({
-        //template: "./src/views/index.hbs",
-        title: "Sun-home"
-      }),
+      // new HtmlWebpackPlugin({
+      //   //template: "./src/views/index.hbs",
+      //   title: "Sun-home"
+      // }),
       new webpack.DefinePlugin({
         'process.env':{
           NODE_ENV: JSON.stringify(env.NODE_ENV)

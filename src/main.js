@@ -8,10 +8,18 @@ global.$ = global.jQuery = $;
 require('bootstrap');
 const navbar = require('./js/navbar');
 import {throttle} from 'lodash';
+import dropdown from './js/dropdownImages';
 //require('bootstrap/dist/js/bootstrap');
 
 // navbar.toggleActive();
+try{
 navbar.menuDisplay();
+}
+catch{
+  console.log('no navbar');
+}
+
+dropdown.clickDropdown();
 
 // require("./views/index.hbs");
 // require("./views/signin.hbs");

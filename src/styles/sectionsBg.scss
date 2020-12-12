@@ -44,7 +44,7 @@
   right:0;
   bottom:0;
   // height: 100%;
-  background-image: url("./images/home.jpg");
+  background-image: url("images/home.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -52,6 +52,11 @@
   animation-fill-mode: forwards;// animation style at the end stays visible
   animation-timing-function: linear;
   z-index:200;
+}
+
+section {
+  background-image: url("./images/concrete-bg.jpg");
+  background-color: $concreteColor;
 }
 
 @include media-breakpoint-down(xl){
@@ -76,9 +81,9 @@
 }
 
 .jakis-tam{
-    background-image: url("./images/aranzacja.jpg");
+    background-image: url("images/aranzacja.jpg");
 }
 
 .jakis-tam2{
-    background-image: url("./images/next-magenta.svg");
+    background-image: url("images/next-magenta.svg");
 }

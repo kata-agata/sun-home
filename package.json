@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.11.2",
+    "axios": "^0.21.0",
     "babel-plugin-async-to-promises": "^1.0.5",
     "bootstrap": "^4.5.3",
     "css-loader": "^4.3.0",

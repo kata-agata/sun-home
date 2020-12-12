@@ -5,3 +5,5 @@ if (typeof window !== "undefined") {
 }
 require("babel-register");
 require("./express");
+
+console.log('this file is working');

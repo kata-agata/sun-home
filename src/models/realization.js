@@ -20,7 +20,6 @@ const realizationSchema = new mongoose.Schema({
   },
   topImage:{
     type: String,
-    required: true
   },
   images: {
     type: Array,

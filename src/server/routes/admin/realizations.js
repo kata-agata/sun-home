@@ -63,7 +63,7 @@ router.put('/edit/:id', async (req,res, next)=>{
 //------------SHOW ONE REALIZATION
 router.get('/:slug', async (req,res)=>{
   let realization = await Realization.findOne({slug: req.params.slug});
-  if(realization === null) res.redirect('/sun/adminPanel/realizations');
+  if(realization === null) res.redirect('/testapp/adminPanel/realizations');
   console.log('nuul?', realization)
   realization = realization.toJSON();
   res.render('partials/admin/showRealization', {realization: realization});
@@ -75,8 +75,17 @@ router.get('/:slug', async (req,res)=>{
 router.delete('/:id', async (req,res) => {
   console.log('delete:',req.params.id);
   await Realization.findByIdAndDelete(req.params.id);
-  res.redirect('/sun/adminPanel/realizations');
+  res.redirect('/testapp/adminPanel/realizations');
 })
+
+//----------- SET TOPIMAGE FOR PROJECT
+router.put('/:slug', async (req,res)=>{
+  //req.query => '0':'url path'
+  //req.params {slug}
+  let realization = await Realization.updateOne({slug: req.params.slug},{topImage: req.query[0]}, ()=>{});
+
+})
+
 
 //Uploading multiple files
 router.post('/uploadmultiple/:slug', upload.array('myFiles', 12), async (req, res, next) => {
@@ -105,7 +114,7 @@ router.post('/uploadmultiple/:slug', upload.array('myFiles', 12), async (req, re
     error.httpStatusCode = 400;
     return next(error);
   }
-  res.redirect(`/sun/adminPanel/realizations/${slug}`);
+  res.redirect(`/testapp/adminPanel/realizations/${slug}`);
 })
 
 
@@ -117,7 +126,7 @@ function saveAndRedirect(path){
     let realization = req.realization;
     realization.title = req.body.title;
     realization.description = req.body.description;
-    realization.topImage = req.body.topImage;
+    realization.topImage = 'images/sun.svg';
     realization.images = [];
     realization.markdown = req.body.markdown;
     console.log(realization);
@@ -125,7 +134,7 @@ function saveAndRedirect(path){
       realization = await realization.save();
       realization = realization.toJSON();
       console.log(realization);
-      res.redirect(`/sun/adminPanel/realizations/${realization.slug}`);
+      res.redirect(`/testapp/adminPanel/realizations/${realization.slug}`);
     } catch(e){
       console.log(e);
       res.render(`partials/admin/${path}`, {realization: realization})

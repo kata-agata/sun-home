@@ -3,7 +3,7 @@
   <h2>Lista opinii</h2>
   <div class="table-responsive">
     <table class="table table-hover">
-      <!-- <thead>
+      <thead>
         <tr>
           <th scope="col">No.</th>
           <th scope="col">Treść opinii</th>
@@ -16,7 +16,7 @@
         <tr>
           <th scope="row">{{@index}}</th>
           <td>{{this.content}}</td>
-          <td>{{this.autor}}</td>
+          <td>{{this.author}}</td>
           <td colspan="2">
               <a href="realizations/{{this._id}}" class="btn btn-primary pull-left">Pokaż</a>
               <form class="d-inline" action="/testapp/adminPanel/opinions/{{this._id}}?_method=DELETE" method="POST">
@@ -25,7 +25,7 @@
           </td>
         </tr>
         {{/opinions}}
-      </tbody> -->
+      </tbody>
     </table>
   </div>
 </div>

@@ -61,11 +61,17 @@ router.put('/edit/:id', async (req,res, next)=>{
 
 
 //------------SHOW ONE REALIZATION
-router.get('/:slug', async (req,res)=>{
-  let realization = await Realization.findOne({slug: req.params.slug});
-  if(realization === null) res.redirect('/testapp/adminPanel/realizations');
-  console.log('nuul?', realization)
-  realization = realization.toJSON();
+router.get('/:slug', async (req,res,next)=>{
+    let realization = await Realization.findOne({slug: req.params.slug}).catch(next);
+    if(realization === null) return res.redirect('/testapp/adminPanel/realizations'); // return statement is needed to finish executing this FUNCTION/
+    //otherwise the function in continued and second response is sent from server
+    //this gives error Error [ERR_HTTP_HEADERS_SENT] [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    console.log('nuul?', realization)
+  try{
+    realization = realization.toJSON();
+  } catch (err) {
+    next(err);
+  }
   res.render('partials/admin/showRealization', {realization: realization});
 })
 

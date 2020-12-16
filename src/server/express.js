@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const authRouter = require('./routes/admin/auth');
 const realizationsRouter = require('./routes/admin/realizations');
+const opinionsRouter = require('./routes/admin/opinions');
 const mainRouter = require('./routes/main');
 var handlebars = require('express-handlebars');
 const dateFormat = require('../views/helpers/dateFormat');
@@ -97,7 +98,7 @@ server.use(methodOverride('_method')); //override delete/put method
 server.use('/testapp/adminPanel', authRouter); // must go after urlencoded
 server.use('/testapp/adminPanel/realizations', realizationsRouter);
 server.use('/testapp', mainRouter);
-
+server.use('/testapp/adminPanel/opinions', opinionsRouter);
 // server.get('*', function (req, res, next) {
 //   const error = new Error(
 //     `${req.ip} tried to access ${req.originalUrl}`,

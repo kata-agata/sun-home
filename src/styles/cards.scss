@@ -16,28 +16,25 @@
   }
 }
 
-
-
-.realization-card{
+.realization-card {
   margin-bottom: 2.5%;
   .card {
     overflow: hidden;
     border: none;
     background: black;
 
-    .layer{
+    .layer {
       position: absolute;
       //background: linear-gradient(90.37deg, #FF7F0A 0.3%, #FF00FF 72.18%, #8D0267 99.66%), #FF00FF;
       //background: linear-gradient(90deg, #8D0267 49.78%, #FF00FF 91.19%), #FF00FF;
       //background: linear-gradient(90.37deg, #FF00FF 0.3%, #8D0267 78.93%, #56013F 99.66%);
-      background: linear-gradient(90.37deg, #FF7F0A 0.3%, #FF00FF 99.66%);
+      background: linear-gradient(90.37deg, #ff7f0a 0.3%, #ff00ff 99.66%);
       height: 100%;
       width: 100%;
-      z-index:100;
+      z-index: 100;
       top: calc(100% - 4px);
       transition: 0.5s ease-in-out;
     }
-
 
     .card-img {
       position: relative;
@@ -48,32 +45,31 @@
       position: relative;
       z-index: 101;
 
-      .card-title{
+      .card-title {
         color: $magentaColor;
         transition: 0.6s ease-in-out;
       }
 
-      .card-text{
+      .card-text {
         color: $lightColor;
         transition: 0.5s ease-in-out;
         font-size: 12px;
       }
     }
 
-    .card-footer{
+    .card-footer {
       z-index: 101;
       border: none;
 
-
-      .btn{
+      .btn {
         border: none;
         height: 2.5em;
 
-        &:focus{
+        &:focus {
           box-shadow: none;
         }
 
-        .fa-chevron-circle-right{
+        .fa-chevron-circle-right {
           height: 2em;
           width: 2em;
           transform: rotate(0deg);
@@ -83,19 +79,19 @@
       }
     }
 
-    &:hover{
-      .layer{
+    &:hover {
+      .layer {
         top: 0;
       }
-      .card-title{
+      .card-title {
         color: $lightColor;
       }
-      .card-text{
+      .card-text {
         color: $darkColor;
       }
-      .card-footer{
-        .btn{
-          .fa-chevron-circle-right{
+      .card-footer {
+        .btn {
+          .fa-chevron-circle-right {
             transform: rotate(360deg);
             height: 2.5em;
             width: 2.5em;
@@ -103,6 +99,12 @@
         }
       }
     }
+  }
+}
 
+#opinions-wrapper{
+  .opinion-element{
+    // background-image: url("images/opinion-shape.svg");
+    // color: red;
   }
 }

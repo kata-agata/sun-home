@@ -13,3 +13,8 @@
   // @debug "#{$i*10}% { background-size: #{(98 + 2*$i)*1%}}"
  };
 }
+
+@keyframes scrollDown{
+  0% { transform: translateY(0%);}
+  100% { transform: translateY(-100%);}
+}

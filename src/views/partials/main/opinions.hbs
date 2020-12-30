@@ -1,26 +1,28 @@
-<section id="opinions" class="min-vh-100">
+<section id="opinions" class="min-vh-100 pt-5">
 
-<h6>opinions</h6>
+<h4 class="d-flex col-6 mx-auto font-weight-light pt-5 justify-content-center text-center">Uważamy, że najlepszą reklamą naszych usług są pozytywne opinie oraz rekomendacje Klientów</h4>
 
-<div id="opinions-wrapper" class="d-flex w-50 mx-auto">
+<div id="opinions-wrapper" class="d-flex flex-wrap w-100 mx-auto h-100 col-md-8 col-lg-7 col-xl-5 pb-5">
   {{#opinions}}
-    <div class="opinion-element col-12 col-md-6">
-      <div class="">
-        <svg width="100%" height="100%" viewBox="0 0 249 248" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="124.173" width="124.827" height="124" fill="#FF00FF"/>
-          <ellipse cx="124.173" cy="124" rx="124.173" ry="124" fill="#FF00FF"/>
-          <ellipse cx="124.102" cy="123.947" rx="111.102" ry="110.947" fill="#F5F5F5"/>
-          <ellipse cx="118.913" cy="40.4123" rx="3.91304" ry="4.11765" fill="#B5B3B5"/>
-          <ellipse cx="129.087" cy="40.4123" rx="3.91304" ry="4.11765" fill="#B5B3B5"/>
-          <path d="M121.261 40.4124C120.844 45.9037 119.968 48.0375 117.348 50.2947" stroke="#B5B3B5" stroke-width="4" stroke-linecap="round"/>
-          <path d="M131.435 40.4124C131.018 45.9037 130.142 48.0375 127.522 50.2947" stroke="#B5B3B5" stroke-width="4" stroke-linecap="round"/>
-        </svg>
+  <!-- opinion element -->
+    <div class="opinion-element m-1 p-0 col-12 col-sm-7 col-md-6 h-100 mx-auto">
+
+      <!-- background shape/ height equal to width by :before element-->
+      <div class="opinion-shape">
+        <div class="opinion-shape-circle">
+
+        </div>
       </div>
-      <div class="">
-        <small>{{{this.sanitizedHtml}}}</small>
-        <small>{{this.author}}</small>
+
+      <!-- icon, text and aotuhor of opinion -->
+      <div class="d-flex opinion-text flex-column py-3 px-2 p-md-4 h-100 justify-content-center">
+        <i class="fas fa-feather align-self-center"></i>
+        <small class="opinion-content text-center font-weight-bold p-0 pt-md-2 text-truncate text-wrap">{{{this.sanitizedHtml}}}</small>
+        <small class="text-right text-md-center pr-3 font-weight-light text-capitalize pt-md-2">{{this.author}}</small>
       </div>
+
     </div>
+    <!-- end of opinon element -->
   {{/opinions}}
 </div>
 

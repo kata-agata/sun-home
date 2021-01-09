@@ -9,6 +9,7 @@ require('bootstrap');
 const navbar = require('./js/navbar');
 import {throttle} from 'lodash';
 import dropdown from './js/dropdownImages';
+import form from './js/form';
 require("./js/typewriter");
 //require('bootstrap/dist/js/bootstrap');
 
@@ -21,6 +22,7 @@ catch{
 }
 
 dropdown.clickDropdown();
+form.confirmForm();
 
 // require("./views/index.hbs");
 // require("./views/signin.hbs");

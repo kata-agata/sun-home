@@ -112,3 +112,9 @@ $small-text: 12px;
        url('fonts/space-mono-v6-latin-ext/space-mono-v6-latin-ext-700italic.ttf') format('truetype'), /* Safari, Android, iOS */
        url('fonts/space-mono-v6-latin-ext/space-mono-v6-latin-ext-700italic.svg#SpaceMono') format('svg'); /* Legacy iOS */
 }
+
+
+.fas, .svg-inline--fa{
+  width: 42px;
+  height: 42px;
+}

@@ -1,3 +1,6 @@
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+};
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -9,6 +12,7 @@ var handlebars = require('express-handlebars');
 const dateFormat = require('../views/helpers/dateFormat');
 const methodOverride = require('method-override');
 
+const bodyParser = require('body-parser');
 
 
 const server = express();
@@ -81,8 +85,8 @@ const hbs = handlebars.create({
 server.engine('hbs', hbs.engine);
 server.set('view engine', 'hbs');
 server.set('views', path.join(__dirname, "/../views"));
-
-
+server.use(bodyParser.urlencoded({extended: true}));
+server.use(bodyParser.json());
 server.use(express.urlencoded({extended: false})); // to access parameters of form
 server.use(methodOverride('_method')); //override delete/put method
 

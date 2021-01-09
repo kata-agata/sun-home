@@ -1,6 +1,57 @@
-<section id="contact">
+<section id="contact" class="min-vh-100 pt-5">
 <div class="container">
 <h5>kontakt</h5>
+<div class="d-flex">
+
+  <div class="col-6">
+    <div>
+      <p><i class="fas fa-mobile-alt fa-3x"></i><p>
+      <p><a href="tel:+48607-694-003">+48 607-694-003</a><p>
+    </div>
+    <div class="">
+      <p><i class="fas fa-home fa-3x" ></i></p>
+      <p>ul. Hetmańska 28</p>
+      <p>84-230 Rumia</p>
+    </div>
+
+
+  </div>
+
+  <div class="col-6">
+    <form method="POST">
+      <div class="form-group">
+        <label for="clientName">Imię i Nazwisko</label>
+        <input type="input" class="form-control" id="clientName" name="clientName" placeholder="Twoje imię">
+        <p class="small text-danger font-weight-bold validation-message name-msg"></p>
+      </div>
+      <div class="form-group">
+        <label for="clientEmail">Email address</label>
+        <input type="email" class="form-control" id="clientEmail" name="clientEmail" placeholder="name@example.pl">
+        <p class="small text-danger font-weight-bold validation-message email-msg"></p>
+      </div>
+      <div class="form-group">
+        <label for="enquirySubject">Wybierz interesujący Cię temat</label>
+        <select class="form-control" id="enquirySubject" name="enquirySubject">
+          <option>Aranzacja wnętrz</option>
+          <option>Prace wykończeniowe</option>
+          <option>Prace budowlane</option>
+          <option>Wykończenia stanów deweloperskich</option>
+          <option>Kompleksowe remonty</option>
+          <option>Wykonanie stanów surowych</option>
+          <option>Drobne zlecenia</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="enquiryText">Example textarea</label>
+        <textarea class="form-control" id="enquiryText" name="enquiryText" rows="3"></textarea>
+        <p class="small text-danger font-weight-bold validation-message text-msg"></p>
+      </div>
+      <button type="submit" id="formSubmit" class="btn btn-primary">Wyślij</button>
+      <div id="message" class="">message: </div>
+    </form>
+  </div>
+
+  </div>
 </div>
   {{>main/divider}}
 </section>

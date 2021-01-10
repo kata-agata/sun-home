@@ -1,3 +1,13 @@
+@import "./mixins.scss";
+
+section{
+  @include for-big-desktop-up{
+     width: 1600px;
+     display: block;
+     margin: 0 auto;
+  }
+}
+
 .section-no-overflow {
   height:100vh;
   //overflow: hidden;

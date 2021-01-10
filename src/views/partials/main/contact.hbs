@@ -1,57 +1,63 @@
-<section id="contact" class="min-vh-100 pt-5">
-<div class="container">
-<h5>kontakt</h5>
-<div class="d-flex">
+<section id="contact" class="section-adjust">
 
-  <div class="col-6">
-    <div>
-      <p><i class="fas fa-mobile-alt fa-3x"></i><p>
-      <p><a href="tel:+48607-694-003">+48 607-694-003</a><p>
+<div class="row row-cols-1 row-cols-md-2 justify-content-center overflow-hidden no-gutters min-vh-100">
+
+    <div class="d-flex flex-column col-md-4 col-xl-3 column-left justify-content-center pt-5">
+
+      <div class="d-flex flex-row flex-wrap text-center pt-5 pb-3">
+        <div class="col-12 pb-5">
+          Skontaktuj się z nami!
+        </div>
+        <div class="col-12 contact-phone  font-weight-bold">
+          <p><i class="fas fa-mobile-alt fa-3x"></i><p>
+          <p><a href="tel:+48607-694-003">+48 607-694-003</a><p>
+        </div>
+        <div class="col-12 contact-address font-weight-bold">
+          <p><i class="fas fa-home fa-3x" ></i></p>
+          <p>ul. Hetmańska 28<br>84-230 Rumia</p>
+        </div>
+      </div>
     </div>
-    <div class="">
-      <p><i class="fas fa-home fa-3x" ></i></p>
-      <p>ul. Hetmańska 28</p>
-      <p>84-230 Rumia</p>
+
+    <div class="d-flex flex-column col-md-8 col-xl-9 justify-content-center pt-md-5">
+      <div class="d-flex flex-column flex-wrap container-xl">
+        <h4 class="w-75 col-xl-6 mx-auto pt-5 pb-2">Formularz kontaktowy</h4>
+        <form class="col-12 col-sm-9 col-xl-6 mx-auto pb-5" method="POST">
+          <div class="form-group">
+            <label for="clientName">Imię i Nazwisko</label>
+            <input type="input" class="form-control" id="clientName" name="clientName" placeholder="Twoje imię">
+            <p class="small text-danger font-weight-bold validation-message name-msg"></p>
+          </div>
+          <div class="form-group">
+            <label for="clientEmail">Adres e-mail</label>
+            <input type="email" class="form-control" id="clientEmail" name="clientEmail" placeholder="name@example.pl">
+            <p class="small text-danger font-weight-bold validation-message email-msg"></p>
+          </div>
+          <div class="form-group">
+            <label for="enquirySubject">Wybierz interesujący Cię temat</label>
+            <select class="form-control" id="enquirySubject" name="enquirySubject">
+              <option>Aranzacja wnętrz</option>
+              <option>Prace wykończeniowe</option>
+              <option>Prace budowlane</option>
+              <option>Wykończenia stanów deweloperskich</option>
+              <option>Kompleksowe remonty</option>
+              <option>Wykonanie stanów surowych</option>
+              <option>Drobne zlecenia</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="enquiryText">Wiadomość</label>
+            <textarea class="form-control" id="enquiryText" name="enquiryText" rows="3"></textarea>
+            <p class="small text-danger font-weight-bold validation-message text-msg"></p>
+          </div>
+          <button type="submit" id="formSubmit" class="btn btn-primary align-self-center">Wyślij</button>
+          <div id="message" class=""></div>
+        </form>
+      </div>
     </div>
-
-
-  </div>
-
-  <div class="col-6">
-    <form method="POST">
-      <div class="form-group">
-        <label for="clientName">Imię i Nazwisko</label>
-        <input type="input" class="form-control" id="clientName" name="clientName" placeholder="Twoje imię">
-        <p class="small text-danger font-weight-bold validation-message name-msg"></p>
-      </div>
-      <div class="form-group">
-        <label for="clientEmail">Email address</label>
-        <input type="email" class="form-control" id="clientEmail" name="clientEmail" placeholder="name@example.pl">
-        <p class="small text-danger font-weight-bold validation-message email-msg"></p>
-      </div>
-      <div class="form-group">
-        <label for="enquirySubject">Wybierz interesujący Cię temat</label>
-        <select class="form-control" id="enquirySubject" name="enquirySubject">
-          <option>Aranzacja wnętrz</option>
-          <option>Prace wykończeniowe</option>
-          <option>Prace budowlane</option>
-          <option>Wykończenia stanów deweloperskich</option>
-          <option>Kompleksowe remonty</option>
-          <option>Wykonanie stanów surowych</option>
-          <option>Drobne zlecenia</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="enquiryText">Example textarea</label>
-        <textarea class="form-control" id="enquiryText" name="enquiryText" rows="3"></textarea>
-        <p class="small text-danger font-weight-bold validation-message text-msg"></p>
-      </div>
-      <button type="submit" id="formSubmit" class="btn btn-primary">Wyślij</button>
-      <div id="message" class="">message: </div>
-    </form>
-  </div>
-
-  </div>
 </div>
+</div>
+
+
   {{>main/divider}}
 </section>

@@ -10,6 +10,7 @@ const navbar = require('./js/navbar');
 import {throttle} from 'lodash';
 import dropdown from './js/dropdownImages';
 import form from './js/form';
+import gallery from './js/gallery';
 require("./js/typewriter");
 //require('bootstrap/dist/js/bootstrap');
 
@@ -20,10 +21,21 @@ navbar.menuDisplay();
 catch{
   console.log('no navbar');
 }
-
+try{
 dropdown.clickDropdown();
+}catch{
+  console.log('no dropdown');
+}
+try{
 form.confirmForm();
-
+}catch{
+  console.log('no form');
+}
+try{
+gallery.display();
+}catch{
+  console.log('no gallery');
+}
 // require("./views/index.hbs");
 // require("./views/signin.hbs");
 

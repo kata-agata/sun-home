@@ -3,9 +3,21 @@
 const hamburgerButton = document.querySelector('.navbar-toggler');
 const navbarMenu = document.querySelector('.navbar');
 const logo = document.querySelector('.navbar-brand>img');
+const menuItems = document.querySelector('.nav')
 let expanded;
 let scrollY;
 let innerH;
+let url;
+
+//window.addEventListener('load', (event) => { //waits when all e.g images are loaded/ menu items where visible for a second after refreshing page
+document.addEventListener("DOMContentLoaded", function(event) { //fired when document ready, but not all is loaded so it is done earlier
+  url = window.location.pathname;
+  console.log(url);
+  if(url.includes('testapp/realization')){
+      menuItems.classList.add('d-none');
+  }
+});
+
 
 
 //---------navbar behavior

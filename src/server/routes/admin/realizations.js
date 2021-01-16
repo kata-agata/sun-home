@@ -66,7 +66,7 @@ router.get('/:slug', async (req,res,next)=>{
     if(realization === null) return res.redirect('/testapp/adminPanel/realizations'); // return statement is needed to finish executing this FUNCTION/
     //otherwise the function in continued and second response is sent from server
     //this gives error Error [ERR_HTTP_HEADERS_SENT] [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
-    console.log('nuul?', realization)
+    //console.log('nuul?', realization)
   try{
     realization = realization.toJSON();
   } catch (err) {
@@ -132,14 +132,14 @@ function saveAndRedirect(path){
     let realization = req.realization;
     realization.title = req.body.title;
     realization.description = req.body.description;
-    realization.topImage = 'images/sun.svg';
-    realization.images = [];
+    //realization.topImage = realization.topImage;
+    //realization.images = req.body.images;
     realization.markdown = req.body.markdown;
-    console.log(realization);
+    //console.log(realization);
     try{
       realization = await realization.save();
       realization = realization.toJSON();
-      console.log(realization);
+      console.log('save after edit:', realization);
       res.redirect(`/testapp/adminPanel/realizations/${realization.slug}`);
     } catch(e){
       console.log(e);

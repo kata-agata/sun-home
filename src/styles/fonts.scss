@@ -1,5 +1,5 @@
-$headersFont: 'BioRhyme';
-$bodyFont: 'Space Mono';
+$headersFont: 'BalsamiqSans';
+$bodyFont: 'Montserrat';
 $small-text: 12px;
 
 .small-text{
@@ -7,6 +7,33 @@ $small-text: 12px;
   line-height: 140%;
 }
 
+
+/* montserrat */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: light;
+  font-weight: 300;
+  src: url('fonts/Montserrat/Montserrat-Light.eot'); /* IE9 Compat Modes */
+  src: local(''),
+        //url('fonts/biorhyme-v5-latin-ext/biorhyme-v5-latin-ext-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('fonts/Montserrat/Montserrat-Light.woff2') format('woff2'), /* Super Modern Browsers */
+        url('fonts/Montserrat/Montserrat-Light.woff') format('woff'), /* Modern Browsers */
+        url('fonts/Montserrat/Montserrat-Light.ttf') format('truetype'), /* Safari, Android, iOS */
+        url('fonts/Montserrat/Montserrat-Light.svg') format('svg'); /* Legacy iOS */
+}
+/* balsamic sans */
+@font-face {
+  font-family: 'BalsamiqSans';
+  font-style: italic;
+  font-weight: 400;
+  src: url('fonts/Balsamiq_Sans/BalsamiqSans-Italic.eot'); /* IE9 Compat Modes */
+  src: local(''),
+        //url('fonts/biorhyme-v5-latin-ext/biorhyme-v5-latin-ext-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('fonts/Balsamiq_Sans/BalsamiqSans-Italic.woff2') format('woff2'), /* Super Modern Browsers */
+        url('fonts/Balsamiq_Sans/BalsamiqSans-Italic.woff') format('woff'), /* Modern Browsers */
+        url('fonts/Balsamiq_Sans/BalsamiqSans-Italic.ttf') format('truetype'), /* Safari, Android, iOS */
+        url('fonts/Balsamiq_Sans/BalsamiqSans-Italic.svg') format('svg'); /* Legacy iOS */
+}
 /* biorhyme-300 - latin-ext */
 @font-face {
   font-family: 'BioRhyme';

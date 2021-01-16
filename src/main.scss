@@ -19,6 +19,9 @@
 
 
 $enable-responsive-font-sizes: true;
+$font-weight-base: 300;
+$font-weight-normal: 300;
+$headings-font-weight:500;
 @import "bootstrap/scss/bootstrap.scss";
 @import "styles/sectionsBg.scss";
 @import "styles/button.scss";
@@ -35,8 +38,6 @@ body {
   background-color: $concreteColor;
   font-family: $bodyFont;
   color: $darkColor;
-  font-style: normal;
-  font-weight: normal;
   font-size: 16px;
   line-height: 160%;
   z-index: 0;

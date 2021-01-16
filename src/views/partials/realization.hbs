@@ -1,16 +1,15 @@
 {{>main/header}}
-<section id="realization" class="pt-5">
-<div class="d-flex flex-row w-75 mx-auto align-items-center">
-  <div class="col-6 text-center">
+<section id="realization" class="pt-5 min-vh-100">
+<div class="row dark-background align-items-center mt-5 pt-5">
+  <div class="col-6 mx-auto text-center">
     <p class="h3">{{realization.title}}</p>
-    <p>{{{realization.sanitizedHtml}}}</p>
-  </div>
-  <div class="col-4">
-    <img class="img-fluid" src="{{realization.topImage}}" alt="">
+    {{{realization.sanitizedHtml}}}
   </div>
 </div>
-<div class="d-flex flex-row w-75 mx-auto">
-  <div class="card-columns">
+<div class="row no-gutters py-4">
+  <div class="h4 col text-center">Galeria</div>
+  <div class="w-100"></div>
+  <div class="card-columns col-10 mx-auto">
     {{#each realization.images}}
       <a href="#" data-toggle="modal" data-target="#realization-gallery-modal" data-imgsrc="\\{{this}}" data-slide-to="{{@index}}">
         <div class="card">

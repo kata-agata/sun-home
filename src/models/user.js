@@ -19,16 +19,17 @@ const userSchema = new mongoose.Schema({
 })
 
 userSchema.pre('save', async function(next){
-  var user = this;
+  var user=this;
+  console.log(user);
+   const salt = crypto.randomBytes(8).toString('hex');
+   const buf = await scrypt(user.password, salt, 64);//hashing password
 
-  const salt = crypto.randomBytes(8).toString('hex');
-  const buf = await scrypt(attrs.password, salt, 64);//hashing password
-
-  let password = `${buf.toString('hex')}.${salt}`
-
-  user.password = password;
-next();
+   user.password = `${buf.toString('hex')}.${salt}`
+   console.log(user);
+  next();
 })
+
+
 
 
 module.exports = mongoose.model('User', userSchema);

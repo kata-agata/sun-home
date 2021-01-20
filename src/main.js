@@ -36,6 +36,7 @@ gallery.display();
 }catch{
   console.log('no gallery');
 }
+
 // require("./views/index.hbs");
 // require("./views/signin.hbs");
 

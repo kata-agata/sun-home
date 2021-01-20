@@ -1,4 +1,5 @@
-const { query } = require('express-validator');
+const { query, body } = require('express-validator');
+const User = require('./../../../models/user');
 
 module.exports = {
   requireName: query('name')
@@ -14,4 +15,12 @@ module.exports = {
     .normalizeEmail()
     .isEmail()
     .withMessage('Must be valid email'),
+  requireUsernameExists: body('username')
+    .trim()
+    .custom(async username=>{
+      const user = await User.findOne({username});
+      if(!user){
+        throw new Error('nie ma takiego użytkownika')
+      }
+    })
 };

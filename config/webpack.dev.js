@@ -105,5 +105,5 @@ module.exports = {
       //filename: "[name]-[contenthash].css"
       filename: "[name].css"
     }),
-  ]
+  ],
 }

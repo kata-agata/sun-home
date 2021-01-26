@@ -4,6 +4,7 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const { authenticateJWT} = require('../helpers/middlewares');
 
 // SET STORAGE
 //------ uploading multiple files into directory /uploads/{realization.slug}
@@ -25,7 +26,7 @@ var upload = multer({ storage: storage })
 //var upload = multer({dest: 'uploads/'})
 
 //------------LIST ALL REALIZATIONS
-router.get('/', async (req,res)=>{
+router.get('/', authenticateJWT, async (req,res)=>{
   let realizations = await Realization.find().sort({createdAt: 'desc'})
   realizations = realizations.map(r => r.toJSON());
   res.render('partials/admin/realizationsManagement', {

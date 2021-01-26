@@ -4,16 +4,18 @@ const Realization = require('./../../../models/realization');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const User = require('./../../../models/user');
+const {generateToken} = require("../helpers/generateToken");
 const {
   requireUsernameExists
 } = require('../helpers/formValidator');
-const {handleErrors} = require('../helpers/middlewares');
+const {handleErrors, authenticateJWT} = require('../helpers/middlewares');
 
 //------------SIGN IN
 router.get('/signin', (req,res)=>{
     res.render('signin', {title: "Strona logowania do panelu admina"});
 })
 
+const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET;
 
 router.post('/signin',
 async (req,res, next)=>{
@@ -55,7 +57,13 @@ async (req,res, next)=>{
      else {
        let isValid = await user.comparePassword(password);
        if (isValid){
-         res.status(201).redirect("/testapp/adminPanel/")
+         try{
+           await generateToken(res, user.username);
+          }
+          catch (err){
+            return res.status(500).json(err.toString());
+          }
+         res.redirect("/testapp/adminPanel/");
        } else {
          res.render("signin",{
            title: "Strona logowania do panelu admina",
@@ -67,7 +75,7 @@ async (req,res, next)=>{
 });
 
 //------------SHOW ADMIN PANEL MAIN PAGE
-router.get('/',(req,res)=>{
+router.get('/',authenticateJWT, (req,res)=>{
   res.render('adminPanel', {title: 'Sun-home Admin Panel'})
 })
 

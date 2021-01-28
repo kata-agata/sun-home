@@ -1,30 +1,36 @@
-<div class="container">
-  <a href="realizations/newRealization" class="btn btn-success">Dodaj</a>
-  <h2>Lista realizacji</h2>
+{{>admin/header}}
+<div class="container pt-5" style="background-color:white;">
+<div class="col-6 col-sm-5 col-md-4 col-lg-2">
+  <a href="realizations/newRealization" class="btn btn-md d-flex align-items-center justify-content-center"><span class="fas fa-plus-circle fa-2x"></span><span class="pl-3">Dodaj</span></a>
+</div>
+
+  <h2 class="col text-center">Lista realizacji</h2>
   <div class="table-responsive">
-    <table class="table table-hover">
-      <thead>
+    <table class="table table-hover table-sm">
+      <thead class="thead-dark text-center">
         <tr>
           <th scope="col">No.</th>
           <th scope="col">Tytuł</th>
           <th scope="col">Data stworzenia</th>
           <th scope="col">Opis</th>
-          <th scope="col"></th>
+          <th scope="col">Zdjęcie</th>
           <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
         {{#realizations}}
-        <tr>
+        <tr class="text-center">
           <th scope="row">{{@index}}</th>
           <td>{{this.title}}</td>
           <td>{{dateFormat this.createdAt}}</td>
           <td>{{this.description}}</td>
-          <td>{{this.topImage}}</td>
+          <td width="50px"><div style="width:100px;"><img class="img-fluid img-thumbnail" src="{{this.topImage}}"/></div></td>
           <td colspan="2">
-              <a href="realizations/{{this.slug}}" class="btn btn-primary pull-left">Pokaż</a>
+              <div class="col">
+                  <a href="realizations/{{this.slug}}" class="btn btn-sm pull-left mb-1">Pokaż</a>
+              </div>
               <form class="d-inline" action="/testapp/adminPanel/realizations/{{this._id}}?_method=DELETE" method="POST">
-                <button class="btn btn-danger" type="submit">Usuń</button>
+                <button class="btn" type="submit">Usuń</button>
               </form>
           </td>
         </tr>

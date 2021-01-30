@@ -17,8 +17,8 @@
             <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               obrazy
             </button>
-            <div id="dropdown-images" class="{{realization.slug}} dropdown-menu col-1" aria-labelledby="dropdownMenuButton">
-              {{#each realization.images}}
+            <div id="dropdown-images" class="{{this.slug}} dropdown-menu col-1" aria-labelledby="dropdownMenuButton">
+              {{#each this.images}}
                 <button  class="dropdown-item" type="button">
                   <div class="card">
                     <img src="\\{{this}}" class="card-img-top" alt="...">
@@ -28,8 +28,8 @@
             </div>
           </div>
       </div>
-      <a href="/testapp/adminPanel/realizations/edit/{{realization._id}}" class="btn sun-success-btn mt-2">Edytuj tekst realizacji</a>
-      <form action="/testapp/adminPanel/realizations/uploadmultiple/{{realization.slug}}"  enctype="multipart/form-data" method="POST">
+      <a href="/testapp/adminPanel/realizations/edit/{{this._id}}" class="btn sun-success-btn mt-2">Edytuj tekst realizacji</a>
+      <form action="/testapp/adminPanel/realizations/uploadmultiple/{{this.slug}}"  enctype="multipart/form-data" method="POST">
                 <!-- Wybierz zdjęcia: <input class="custom-file-input" type="file" name="myFiles" multiple> -->
         <div class="input-group mb-3">
           <div class="custom-file ">

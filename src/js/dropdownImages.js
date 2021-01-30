@@ -36,16 +36,21 @@ export default {
 
         //every time click occurs remove style of each displayed image
         //highlight only selected image
-        for (let j = 0; j < cards.length; j++) {
-          let card = cards[j];
-          let cardImageSrc = card.children[0].getAttribute("src");
 
-          if (cardImageSrc === imageSrc) {
-            card.classList.add("border-success");
-          } else {
-            card.classList.remove("border-success");
-          }
-        }
+        let cardImage = document.querySelector('img.card-img');
+        cardImage.src = imageSrc;
+
+
+        // for (let j = 0; j < cards.length; j++) {
+        //   let card = cards[j];
+        //   let cardImageSrc = card.children[0].getAttribute("src");
+        //
+        //   // if (cardImageSrc === imageSrc) {
+        //   //   card.classList.add("border-success");
+        //   // } else {
+        //   //   card.classList.remove("border-success");
+        //   // }
+        // }
       });
     }
   },

@@ -67,12 +67,14 @@ router.get('/:slug', async (req,res,next)=>{
     //otherwise the function in continued and second response is sent from server
     //this gives error Error [ERR_HTTP_HEADERS_SENT] [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
     //console.log('nuul?', realization)
+    let realizations = [realization];
   try{
-    realization = realization.toJSON();
+
+    realizations = realizations.map(r => r.toJSON());
   } catch (err) {
     next(err);
   }
-  res.render('partials/admin/showRealization', {realization: realization});
+  res.render('partials/admin/showRealization', {realizations: realizations});
 })
 
 //----------- DELETE REALIZATION

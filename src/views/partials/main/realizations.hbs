@@ -4,24 +4,7 @@
 
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 mb-4">
   {{#realizations}}
-  <div class="col realization-card">
-    <div class="card h-100 mt-2">
-      <div class="layer">
-
-      </div>
-      <img src="{{this.topImage}}" class="card-img px-3 pt-3" alt="...">
-      <div class="card-body pb-0">
-        <h6 class="card-title">{{this.title}}</h6>
-        <p class="card-text">{{this.description}}</p>
-      </div>
-      <div class=" row card-footer pt-0">
-        <p class="card-text my-auto pl-3"><small class="text-muted">{{dateFormat this.createdAt}}</small></p>
-        <a href="testapp/realization/{{this.slug}}" class="btn ml-auto mr-2" type="button" name="button">
-          <i class="fas fa-chevron-circle-right"></i>
-        </a>
-      </div>
-    </div>
-  </div>
+    {{>realizationCard}}
   {{/realizations}}
 </div>
 <!-- {{#realizations}}

@@ -26,15 +26,15 @@ router.get('/', async (req,res, next)=>{
 //go to single realization page
 router.get('/realization/:slug', async (req, res, next) =>{
   let realization = await Realization.findOne({slug: req.params.slug}).catch(next);
-
-  try{
-    realization = realization.toJSON();
+  let realizations = [realization];
+try{
+  realizations = realizations.map(r => r.toJSON());
   } catch (err) {
     next(err);
   }
 
   console.log("rel:", realization);
-  res.render('partials/realization', {realization});
+  res.render('partials/singleRealizationPage', {realizations});
   //res.render('partials/realization', {realization});
 });
 

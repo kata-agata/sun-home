@@ -1,50 +1,78 @@
-<div class="container">
-  <h1 class="mb-1">{{realization.title}}</h1>
-  <div class="">
-    {{dateFormat realization.createdAt}}
+{{>admin/header}}
+<div class="container-fluid p-0 pt-5">
+  <!-- one realization passed as array to use same template of realizationCard -->
+{{#realizations}}
+  <div class="pt-5 d-flex">
+          <a href="/testapp/adminPanel/realizations" class="btn sun-danger-btn mt-5 ml-auto">Wróć do listy realizacji</a>
   </div>
-  <a href="/testapp/adminPanel/realizations" class="btn btn-secondary">Lista realizacji</a>
-  <a href="/testapp/adminPanel/realizations/edit/{{realization._id}}" class="btn btn-info">Edytuj</a>
 
-  <form action="/testapp/adminPanel/realizations/uploadmultiple/{{realization.slug}}"  enctype="multipart/form-data" method="POST">
-    Select images: <input class="custom-file-input" type="file" name="myFiles" multiple>
-    <input type="submit" value="Wgraj pliki" class="btn"/>
-  </form>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 mb-4 d-flex">
+    <!-- first column with buttons to do action -->
+    <div class="text-center ml-auto pl-3">
+      <h3 class="mb-1 pt-5">{{this.title}}</h3>
+      <small>{{dateFormat this.createdAt}}</small>
+      <div class="row no-gutters d-flex align-items-center justify-content-center">
+          <label class="mx-2 " for="">Wybierz obraz do karty:</label>
+          <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              obrazy
+            </button>
+            <div id="dropdown-images" class="{{realization.slug}} dropdown-menu col-1" aria-labelledby="dropdownMenuButton">
+              {{#each realization.images}}
+                <button  class="dropdown-item" type="button">
+                  <div class="card">
+                    <img src="\\{{this}}" class="card-img-top" alt="...">
+                  </div>
+                </button>
+              {{/each}}
+            </div>
+          </div>
+      </div>
+      <a href="/testapp/adminPanel/realizations/edit/{{realization._id}}" class="btn sun-success-btn mt-2">Edytuj tekst realizacji</a>
+      <form action="/testapp/adminPanel/realizations/uploadmultiple/{{realization.slug}}"  enctype="multipart/form-data" method="POST">
+                <!-- Wybierz zdjęcia: <input class="custom-file-input" type="file" name="myFiles" multiple> -->
+        <div class="input-group mb-3">
+          <div class="custom-file ">
+            <label class="custom-file-label" for="inputGroupFile01">Wybierz zdjęcia</label>
+            <input name="myFiles" type="file" class="custom-file-input" id="inputGroupFile01" multiple>
+          </div>
+          <input type="submit" value="Załaduj" class="btn"/>
+        </div>
+      </form>
+    </div>
+    <!-- view of realization card as it looks on page -->
+    {{>realizationCard}}
+  </div>
 
-  <div class="">
-    <label for="">Wybierz główny obraz</label>
-    <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dropdown button
-  </button>
-  <div id="dropdown-images" class="{{realization.slug}} dropdown-menu col-1" aria-labelledby="dropdownMenuButton">
+
+<!-- view of single realization page -->
+<!-- <section id="realization" class="h-100">
+<div class="row dark-background align-items-center">
+  <div class="col-6 mx-auto text-center pt-2">
+    <p class="h3">{{realization.title}}</p>
+    {{{realization.sanitizedHtml}}}
+  </div>
+</div>
+<div class="row no-gutters py-4">
+  <div class="h4 col text-center">Galeria</div>
+  <div class="w-100"></div>
+  <div class="card-columns col-10 mx-auto">
     {{#each realization.images}}
-      <button  class="dropdown-item" type="button">
+      <a href="#" data-toggle="modal" data-target="#realization-gallery-modal" data-imgsrc="\\{{this}}" data-slide-to="{{@index}}">
         <div class="card">
           <img src="\\{{this}}" class="card-img-top" alt="...">
         </div>
-      </button>
+      </a>
+        {{else}}
+        <p>No images</p>
     {{/each}}
   </div>
 </div>
-  </div>
+</section> -->
+<!-- !!!!!!!!!!!!!!!! -->
+<section id="realization">
+  {{>realization}}
+</section>
 
-
-  <div class="">
-    {{{realization.sanitizedHtml}}}
+  {{/realizations}}
   </div>
-  <div class="">
-    {{{realization.topImage}}}
-  </div>
-
-
-  <div class="card-columns">
-    {{#each realization.images}}
-    <div class="card">
-      <img src="\\{{this}}" class="card-img-top" alt="...">
-    </div>
-    {{/each}}
-  </div>
-
-  </div>
-</div>

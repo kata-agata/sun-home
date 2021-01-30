@@ -1,16 +1,15 @@
-{{>main/header}}
-<section id="realization" class="pt-5 min-vh-100">
+
 <div class="row dark-background align-items-center mt-5 pt-5">
   <div class="col-6 mx-auto text-center">
-    <p class="h3">{{realization.title}}</p>
-    {{{realization.sanitizedHtml}}}
+    <p class="h3">{{this.title}}</p>
+    {{{this.sanitizedHtml}}}
   </div>
 </div>
 <div class="row no-gutters py-4">
   <div class="h4 col text-center">Galeria</div>
   <div class="w-100"></div>
   <div class="card-columns col-10 mx-auto">
-    {{#each realization.images}}
+    {{#each this.images}}
       <a href="#" data-toggle="modal" data-target="#realization-gallery-modal" data-imgsrc="\\{{this}}" data-slide-to="{{@index}}">
         <div class="card">
           <img src="\\{{this}}" class="card-img-top" alt="...">
@@ -35,7 +34,7 @@
 
           <div id="carouselExample" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
-            {{#each realization.images}}
+            {{#each this.images}}
             <div class="carousel-item">
               <img class="d-block w-100" src="\\{{this}}">
             </div>
@@ -60,5 +59,3 @@
       </div> -->
     </div>
   </div>
-  </div>
-</section>

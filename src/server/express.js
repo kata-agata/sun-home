@@ -1,6 +1,6 @@
-if (process.env.NODE_ENV !== 'production') {
+//if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
-};
+//};
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -52,6 +52,7 @@ function errorHandler (err, req, res, next) {
 // });
 
 const isProd = process.env.NODE_ENV ==="production";
+console.log("1",process.env.NODE_ENV);
 
 if(!isProd){
   const webpack = require("webpack");
@@ -71,7 +72,7 @@ if(!isProd){
 
 // const staticMiddleware = express.static("dist");
 // server.use(staticMiddleware);
-server.use('/images', express.static('dist'))
+server.use('/images', express.static('dist'));
 
 
 // ------------handlebars configuration

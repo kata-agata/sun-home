@@ -20,6 +20,7 @@
 
   @include media-breakpoint-only(xs){
     display: list-item;
+    margin-bottom: 0;
   }
 
   @include media-breakpoint-down(sm){
@@ -27,6 +28,7 @@
     display: grid;
     justify-content: flex-start;
     margin-left: 0;
+    margin-bottom: 10px;
   }
 
 @include media-breakpoint-only(md){
@@ -55,9 +57,9 @@
 
     @include media-breakpoint-only(xs){
       color: $darkColor;
-      padding: 0.15rem 0.4rem;
+      padding: 0.1rem 0.2rem;
       font-size: 0.6rem;
-      margin:2px;
+      margin:1px;
       margin-left:0;
       justify-content: flex-start;
       text-align: left;
@@ -70,7 +72,7 @@
         border: 2px solid $magentaColor;
         background-color: transparent !important;
         text-align: left;
-        color: $darkGreyColor !important;
+        color: white !important;
       }
       &.active{
         padding: 0.15rem 0.4rem;
@@ -82,12 +84,15 @@
     }
 
     @include media-breakpoint-only(sm){
-      opacity: 0.5;
+      opacity: 1;
+      margin:2px;
+      border:  2px solid transparent;
+      color: white !important;
     }
 
     @include media-breakpoint-up(md){
 
-      opacity: 0.8;
+      opacity: 0.95;
     }
 
     &:hover {

@@ -66,8 +66,8 @@ router.post('/', [
   else {
      // create reusable transporter object using the default SMTP transport
     const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 465,
+      host: 'mail.sun-home.com.pl',
+      port: 587,
       secure: true,
       auth: {
         user: process.env.GMAIL_USER,
@@ -87,7 +87,7 @@ router.post('/', [
      let info = await transporter.sendMail(mailOpts, (err,info)=>{
        //serverResponse.errors = "";
        if (err){ //error with invalid auth properties
-          serverResponse.message = "Wystąpił błąd, Twoja wiadomość nie została wysłana. Spróbuj później.";
+          serverResponse.message = "Wystąpił błąd, Twoja wiadomość nie została wysłana. Spróbuj później." + err.toString();
           res.json(serverResponse);
        } else { //success
           serverResponse.message =  "Twoja wiadomość została wysłana, skontaktujemy się z Tobą.";

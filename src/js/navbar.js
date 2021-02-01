@@ -5,10 +5,11 @@ const navbarMenu = document.querySelector('.navbar');
 const logo = document.querySelector('.navbar-brand>img');
 const menuItems = document.querySelector('.nav')
 const dropdown = document.querySelector('.navbar-collapse');
-let expanded;
-let scrollY;
-let innerH;
+
+let scrollY = 0;
+let innerH = 0;
 let url;
+let expanded = hamburgerButton.getAttribute('aria-expanded'); // to be set on loading page
 
 //window.addEventListener('load', (event) => { //waits when all e.g images are loaded/ menu items where visible for a second after refreshing page
 document.addEventListener("DOMContentLoaded", function(event) { //fired when document ready, but not all is loaded so it is done earlier
@@ -27,20 +28,28 @@ const menuDisplay = ()=>{
   window.addEventListener('scroll', _.throttle(()=>{
     innerH = window.innerHeight;
     scrollY = window.scrollY;
+    expanded = hamburgerButton.getAttribute('aria-expanded'); // check attrbiute when scroll
 
-    console.log(innerH, scrollY);
+    console.log(innerH, scrollY, expanded);
 
-    if(scrollY > innerH/2){
-      changeToDarkMenu();
-    } else {
-      changeToLightMenu();
-    }
+    if(expanded =="false"){
+     if(scrollY < innerH/2){
+       changeToLightMenu();
+     } else {
+       changeToDarkMenu();
+     }
+   }
+    //
+    // if(!expanded){
+    //   changeToDarkMenu();
+    // }
+
   },200));
 
   //----on toggler button click (screen smaller than md) change navbar theme when collapse
   hamburgerButton.addEventListener('click',()=>{
-    if(scrollY<innerH/2){
-      expanded = hamburgerButton.getAttribute('aria-expanded');
+    if(scrollY<=innerH/2){
+      expanded = hamburgerButton.getAttribute('aria-expanded'); //check attribiute on click
       if(expanded == "true"){
         changeToLightMenu();
       }else{

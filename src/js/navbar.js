@@ -4,6 +4,7 @@ const hamburgerButton = document.querySelector('.navbar-toggler');
 const navbarMenu = document.querySelector('.navbar');
 const logo = document.querySelector('.navbar-brand>img');
 const menuItems = document.querySelector('.nav')
+const dropdown = document.querySelector('.navbar-collapse');
 let expanded;
 let scrollY;
 let innerH;
@@ -48,6 +49,14 @@ const menuDisplay = ()=>{
     }
   });
 
+  document.addEventListener('click', event => {
+    if (!navbarMenu.contains(event.target)) { //when click outside the navbarMenu
+       dropdown.classList.remove('show');
+       hamburgerButton.classList.add('collapsed');
+       hamburgerButton.setAttribute("aria-expanded", false);
+     }
+  }); //easy trick to close dropdown menu
+
 }
 
 //--------chaning themes of navbarMenu
@@ -62,6 +71,8 @@ const changeToDarkMenu = function(){
   navbarMenu.classList.add('navbar-dark','bg-dark');
   logo.src = "/images/logo-light.svg";
 }
+
+
 
 module.exports = {
     menuDisplay: menuDisplay

@@ -53,7 +53,7 @@ section{
   left:0;
   right:0;
   bottom:0;
-  // height: 100%;
+  min-height: 100%;
   background-image: url("images/main-md.jpg");
   background-position: center center;
   background-repeat: no-repeat;
@@ -73,13 +73,13 @@ section {
   position: relative;
 }
 
-@include media-breakpoint-down(xl){
+@media (max-width: 1359px){
   .home-background{
     @include home-container(moveBackgroundImage, 15s);
   }
 }
 
-@include media-breakpoint-up(xl) {
+@media (min-width: 1360px) {
   .home-background{
       @include home-container(scaleBackgroundImage, 20s);
   }

@@ -71,8 +71,9 @@ if(!isProd){
   server.use(webpackHotMiddleware);
 }
 
-// const staticMiddleware = express.static("dist");
+ //const staticMiddleware = express.static("dist");
 // server.use(staticMiddleware);
+//console.log(staticMiddleware);
 server.use('/images', express.static('dist'))
 
 

@@ -2,17 +2,21 @@ const express = require('express');
 const Realization = require('./../../../models/realization');
 const router = express.Router();
 const multer = require('multer');
+
 const path = require('path');
 const fs = require('fs');
 
 // SET STORAGE
-//------ uploading multiple files into directory /uploads/{realization.slug}
+//------ uploading multiple files into directory /dist/{realization.slug}
 //------ create folder if not exist
 //------ change file name
+
+
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     const { slug } = req.params;
-    const path = `./dist/${slug}`
+    const path = `../public_html/images/${slug}`
+    //const path = `./images/${slug}`
     fs.mkdirSync(path, { recursive: true })
     cb(null, path)
   },
@@ -101,7 +105,8 @@ router.post('/uploadmultiple/:slug', upload.array('myFiles', 12), async (req, re
   let realization = await Realization.findOne({slug: req.params.slug});
   const newImages = files.map( f => {
     let url = f.path;
-    url = url.replace('dist', 'images');
+    //url = url.replace('dist', 'images'); localhost
+    url = url.replace('../public_html/', '');
     return url;
   });
   realization.images = [...realization.images, ...newImages];
@@ -109,7 +114,7 @@ router.post('/uploadmultiple/:slug', upload.array('myFiles', 12), async (req, re
   try{
     realization = await realization.save();
     realization = realization.toJSON();
-    console.log(files);
+    console.log("to:", files);
   } catch(e){
     console.log(e);
     res.send(files);

@@ -9,8 +9,9 @@ const dropdown = document.querySelector('.navbar-collapse');
 let scrollY = 0;
 let innerH = 0;
 let url;
+try{
 let expanded = hamburgerButton.getAttribute('aria-expanded'); // to be set on loading page
-
+} catch{}
 //window.addEventListener('load', (event) => { //waits when all e.g images are loaded/ menu items where visible for a second after refreshing page
 document.addEventListener("DOMContentLoaded", function(event) { //fired when document ready, but not all is loaded so it is done earlier
   url = window.location.pathname;

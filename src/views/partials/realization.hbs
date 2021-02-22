@@ -10,11 +10,13 @@
   <div class="w-100"></div>
   <div class="card-columns col-10 mx-auto">
     {{#each this.images}}
-      <a href="#" data-toggle="modal" data-target="#realization-gallery-modal" data-imgsrc="\\{{this}}" data-slide-to="{{@index}}">
-        <div class="card">
-          <img src="\\{{this}}" class="card-img-top" alt="...">
-        </div>
-      </a>
+      <div class="gallery-item">
+        <a href="#" data-toggle="modal" data-target="#realization-gallery-modal" data-imgsrc="\\{{this}}" data-slide-to="{{@index}}">
+          <div class="card">
+            <img src="\\{{this}}" class="card-img-top" alt="...">
+          </div>
+        </a>
+      </div>
         {{else}}
         <p>No images</p>
     {{/each}}

@@ -32,6 +32,7 @@ export default {
       item.addEventListener("click", () => {
         let slug = window.location.pathname; //get path of current project
         let imageSrc = item.children[0].children[0].getAttribute("src"); // geting src of each image
+        console.log("image:", imageSrc);
         setImageSrc(slug, imageSrc); // set selected image as topImage, saved to database
 
         //every time click occurs remove style of each displayed image

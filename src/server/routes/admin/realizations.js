@@ -7,7 +7,7 @@ const path = require('path');
 const fs = require('fs');
 
 // SET STORAGE
-//------ uploading multiple files into directory /dist/{realization.slug}
+//------ uploading multiple files into directory /public_html/images/{realization.slug} on remote server
 //------ create folder if not exist
 //------ change file name
 
@@ -88,6 +88,30 @@ router.delete('/:id', async (req,res) => {
   console.log('delete:',req.params.id);
   await Realization.findByIdAndDelete(req.params.id);
   res.redirect('/testapp/adminPanel/realizations');
+})
+
+//----------- DELETE REALIZATION image
+// don't delete with <a> becuse everything from database will be deleted
+//use form instead
+router.delete('/:slug/:id', async (req,res,next) => {
+  const {slug,id} = req.params;
+  let realization = await Realization.findOne({slug: slug}).catch(next);
+  let newImages = realization.images.filter(function (image, index) {
+    return index!==parseInt(id)
+  }); //parseINt, because req.params.id is a string
+
+  let update = await Realization.updateOne({slug: slug},{images: newImages}, ()=>{});
+  //res.redirect('/testapp/adminPanel/realizations');
+  realization.images = newImages;
+  console.log(update);
+  //res.render(`/partials/realization`, {realization});
+  //  res.redirect(`/testapp/adminPanel/realizations/${slug}`);
+  if(update.ok === 1){
+    res.sendStatus(200)
+  } else{
+    res.sendStatus(400).json({status: "error"});
+  }
+
 })
 
 //----------- SET TOPIMAGE FOR PROJECT

@@ -14,59 +14,50 @@ import gallery from './js/gallery';
 require("./js/typewriter");
 //require('bootstrap/dist/js/bootstrap');
 
-// navbar.toggleActive();
-try{
-navbar.menuDisplay();
-}
-catch{
-  console.log('no navbar');
-}
-try{
-dropdown.clickDropdown();
-}catch{
-  console.log('no dropdown');
-}
-try{
-form.confirmForm();
-}catch{
-  console.log('no form');
-}
+
+document.addEventListener("DOMContentLoaded", function(event) { //fired when document ready, but not all is loaded so it is done earlier
+  let url = window.location.pathname;
+
+
+  if(!url.includes('/adminPanel')){ //other then admin panel
+
+    try{
+    navbar.menuDisplay();
+    }
+    catch{
+      console.log('no navbar');
+    }
+    //contact form
+    try{
+    form.confirmForm();
+    }catch{
+      console.log('no form');
+    }
+  } else { //!!!!!!!!!!!only in admin panel
+    //add delete button to gallery items in realization
+    try{
+      gallery.addDeleteButton();
+    }catch{
+      console.log("buttons not displayed");
+    };
+    //dropdown setting topImage in realization
+    try{
+    dropdown.clickDropdown();
+    }catch{
+      console.log('no dropdown');
+    }
+
+  }
+});
+
+
+//gallery modal - for main page and adminPanel
 try{
 gallery.display();
 }catch{
   console.log('no gallery');
 }
-// require("./views/index.hbs");
-// require("./views/signin.hbs");
 
-// var indexPage = require("./views/index.hbs");
-//
-// document.addEventListener("DOMContentLoaded", function() {
-// 	var div = document.createElement('div');
-// 	div.innerHTML = indexPage({
-// 		title: "test"
-// 	});
-// 	document.body.appendChild(div);
-// });
-
-//console.log(Realization);
-// import buttonStyle from './styles/button.scss';
-//
-// // var a = async(args) => {
-// //   const {a,b} = args;
-// //   await console.log('Hello from the future',a,b);
-// //   console.log("done");
-// // }
-// //
-// // a({a:1,b:2})
-//
-// let button2 = document.createElement("button");
-//
-//  let div = document.querySelector('#test');
-//
-//  div.innerHTML = `<button class="${buttonStyle.btn}">Click</button>`;
-
-console.log(`Enviroment is ${process.env.NODE_ENV}`);
 
 var TxtType = function(el, toRotate, period) {
         this.toRotate = toRotate;

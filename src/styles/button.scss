@@ -11,3 +11,22 @@ $btn-font-family: $bodyFont;
   border-radius: 5px;
   font-size: 0.75rem;
 }
+
+.btn-delete{
+  position: absolute;
+  right: 0;
+  top:0;
+  padding: 3px;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  background-color: red;
+  border-color:red;
+  color: white;
+  z-index: 1000;
+
+  .fa-trash{
+    height: 20px;
+    width: 20px;
+  }
+}

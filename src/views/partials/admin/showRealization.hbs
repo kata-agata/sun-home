@@ -1,14 +1,14 @@
 {{>admin/header}}
-<div class="container-fluid p-0 pt-5">
+<div class="container-fluid p-0 pt-3">
   <!-- one realization passed as array to use same template of realizationCard -->
 {{#realizations}}
-  <div class="pt-5 d-flex">
-          <a href="/testapp/adminPanel/realizations" class="btn sun-danger-btn mt-5 ml-auto">Wróć do listy realizacji</a>
+  <div class="d-flex">
+          <a href="/testapp/adminPanel/realizations" class="btn sun-danger-btn ml-auto">Wróć do listy realizacji</a>
   </div>
 
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 mb-4 d-flex">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 mb-4 d-flex justify-content-center">
     <!-- first column with buttons to do action -->
-    <div class="text-center ml-auto pl-3">
+    <div class="text-center pl-3">
       <h3 class="mb-1 pt-5">{{this.title}}</h3>
       <small>{{dateFormat this.createdAt}}</small>
       <div class="row no-gutters d-flex align-items-center justify-content-center">
@@ -29,21 +29,22 @@
           </div>
       </div>
       <a href="/testapp/adminPanel/realizations/edit/{{this._id}}" class="btn sun-success-btn mt-2">Edytuj tekst realizacji</a>
-      <form action="/testapp/adminPanel/realizations/uploadmultiple/{{this.slug}}"  enctype="multipart/form-data" method="POST">
-                <!-- Wybierz zdjęcia: <input class="custom-file-input" type="file" name="myFiles" multiple> -->
-        <div class="input-group mb-3">
-          <div class="custom-file ">
-            <label class="custom-file-label" for="inputGroupFile01">Wybierz zdjęcia</label>
-            <input name="myFiles" type="file" class="custom-file-input" id="inputGroupFile01" multiple>
-          </div>
-          <input type="submit" value="Załaduj" class="btn"/>
-        </div>
-      </form>
+
     </div>
     <!-- view of realization card as it looks on page -->
     {{>realizationCard}}
   </div>
 
+  <form action="/testapp/adminPanel/realizations/uploadmultiple/{{this.slug}}"  enctype="multipart/form-data" method="POST">
+            <!-- Wybierz zdjęcia: <input class="custom-file-input" type="file" name="myFiles" multiple> -->
+    <div class="input-group row d-flex col-md-6 mx-auto">
+      <div class="custom-file ">
+        <label class="custom-file-label" for="inputGroupFile01">Wybierz zdjęcia</label>
+        <input name="myFiles" type="file" class="custom-file-input" id="inputGroupFile01" multiple>
+      </div>
+      <input type="submit" value="Załaduj" class="btn"/>
+    </div>
+  </form>
 
 <!-- view of single realization page -->
 <!-- <section id="realization" class="h-100">

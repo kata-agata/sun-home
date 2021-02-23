@@ -11,8 +11,10 @@ const mainRouter = require('./routes/main');
 var handlebars = require('express-handlebars');
 const dateFormat = require('../views/helpers/dateFormat');
 const methodOverride = require('method-override');
-
+const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const cors = require('cors');
 
 
 const server = express();
@@ -94,7 +96,8 @@ server.use(bodyParser.urlencoded({extended: true}));
 server.use(bodyParser.json());
 server.use(express.urlencoded({extended: false})); // to access parameters of form
 server.use(methodOverride('_method')); //override delete/put method
-
+server.use(cors());
+server.use(cookieParser());
 //handlebars.registerPartial('home', path.join(__dirname, "/../views/partials/_home"));
 
 

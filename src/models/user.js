@@ -29,6 +29,11 @@ userSchema.pre('save', async function(next){
   next();
 })
 
+userSchema.methods.comparePassword = async function(suppliedPassword){
+   const [hashed, salt] = this.password.split('.');
+   const hashedSuppliedBuf = await scrypt(suppliedPassword, salt, 64);
+   return hashed === hashedSuppliedBuf.toString('hex');
+}
 
 
 

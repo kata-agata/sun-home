@@ -3,3 +3,4 @@ src/images
 uploads
 dist
 .env
+src/server/keys

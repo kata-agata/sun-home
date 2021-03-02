@@ -15,14 +15,18 @@ const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
-
+const https = require('https');
+const fs = require('fs');
 
 const server = express();
 
 
 const dbUser = process.env.DB_USER;
 const dbPass = process.env.DB_PASS;
-
+const options = {
+  key: fs.readFileSync(process.env.KEY),
+  cert: fs.readFileSync(process.env.CERT)
+}
 
 mongoose.connect(`mongodb+srv://${dbUser}:${dbPass}@cluster0.sepqc.mongodb.net/sun-home?retryWrites=true&w=majority`,{
     //mongoose.connect('mongodb://localhost/blog',{
@@ -128,8 +132,10 @@ server.use((error, req, res, next) => {
 
 
 
-const PORT = process.env.PORT || 8080;
-server.listen(PORT, ()=>{
-  console.log(`Server is listening on http://localhost:${PORT}`);
-  console.log(__dirname);
-});
+const PORT = process.env.PORT || 8443;
+// server.listen(PORT, ()=>{
+//   console.log(`Server is listening on http://localhost:${PORT}`);
+//   console.log(__dirname);
+// });
+
+https.createServer(options, server).listen(8443);

@@ -45,7 +45,7 @@ module.exports = {
               next();
           });
       } else {
-          res.sendStatus(401);
+          res.redirect("/testapp/adminPanel/signin");
       }
 
     }

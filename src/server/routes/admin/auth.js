@@ -79,4 +79,9 @@ router.get('/',authenticateJWT, (req,res)=>{
   res.render('adminPanel', {title: 'Sun-home Admin Panel'})
 })
 
+router.get('/logout', (req,res)=>{
+  res.clearCookie('token');
+    res.redirect('/testapp/adminPanel/signin');
+});
+
 module.exports = router;
